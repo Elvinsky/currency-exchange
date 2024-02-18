@@ -1,0 +1,113 @@
+@font-face {
+  font-family: Inter-Thin;
+  src: url('@/assets/fonts/Inter-Thin.ttf');
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Inter-ExtraLight;
+  src: url('@/assets/fonts/Inter-ExtraLight.ttf');
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Inter-Light;
+  src: url('@/assets/fonts/Inter-Light.ttf');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Inter-Regular;
+  src: url('@/assets/fonts/Inter-Regular.ttf');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Inter-Medium;
+  src: url('@/assets/fonts/Inter-Medium.ttf');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Inter-SemiBold;
+  src: url('@/assets/fonts/Inter-SemiBold.ttf');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Inter-Bold;
+  src: url('@/assets/fonts/Inter-Bold.ttf');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Inter-ExtraBold;
+  src: url('@/assets/fonts/Inter-ExtraBold.ttf');
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Inter-Black;
+  src: url('@/assets/fonts/Inter-Black.ttf');
+  font-weight: 900;
+  font-style: normal;
+}
+
+:root {
+  --font-inter-thin: 'Inter-Thin', 'sans-serif';
+  --font-inter-extralight: 'Inter-ExtraLight', 'sans-serif';
+  --font-inter-light: 'Inter-Light', 'sans-serif';
+  --font-inter-regular: 'Inter-Regular', 'sans-serif';
+  --font-inter-medium: 'Inter-Medium', 'sans-serif';
+  --font-inter-semibold: 'Inter-SemiBold', 'sans-serif';
+  --font-inter-bold: 'Inter-Bold', 'sans-serif';
+  --font-inter-extrabold: 'Inter-ExtraBold', 'sans-serif';
+  --font-inter-black: 'Inter-Black', 'sans-serif';
+
+
+  /* Font size */
+  --font-size-4xs: 8px;
+  --font-size-3xs: 10px;
+  --font-size-2xs: 12px;
+  --font-size-xs: 14px;
+  --font-size-s: 16px;
+  --font-size-m: 18px;
+  --font-size-xm: 20px;
+  --font-size-l: 22px;
+  --font-size-xl: 24px;
+  --font-size-2xl: 28px;
+  --font-size-3xl: 32px;
+  --font-size-4xl: 36px;
+  --font-size-5xl: 40px;
+  --font-size-6xl: 48px;
+  --font-size-7xl: 64px;
+  --font-size-8xl: 96px;
+
+  /* Line height */
+  --line-height-text-xs: 1.1em;
+  --line-height-text-s: 1.2em;
+  --line-height-text-m: 1.25em;
+  --line-height-text-l: 1.33em;
+  --line-height-text-xl: 1.5em;
+  --line-height-text-2xl: 1.6em;
+
+  /* Letter Spacing */
+  --letter-spacing-xs: 1px;
+  --letter-spacing-s: 2px;
+  --letter-spacing-m: 3px;
+  --letter-spacing-xm: 4px;
+  --letter-spacing-l: 5px;
+  --letter-spacing-xl: 6px;
+  --letter-spacing-2xl: 7px;
+  --letter-spacing-3xl: 8px;
+  --letter-spacing-4xl: 9px;
+  --letter-spacing-5xl: 10px;
+}

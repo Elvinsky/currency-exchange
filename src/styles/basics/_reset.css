@@ -1,0 +1,43 @@
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
+  line-height: 1;
+}
+
+:focus,
+:active {
+  outline: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+html,
+body {
+  font-size: var(--font-size-xl);
+  line-height: var(--line-height-text-xs);
+  font-family: var(--font-inter-regular);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+label {
+  line-height: var(--line-height-text-xs);
+}
+
+ul li {
+  list-style: none;
+}
