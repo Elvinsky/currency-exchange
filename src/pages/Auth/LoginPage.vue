@@ -1,7 +1,26 @@
 <template>
   <HeaderComponent />
   <div class="login">
-    <div class="login__content"></div>
+    <div class="login__content">
+      <!-- <BaseInput>
+        <template #prepend-icon>
+          <CountryIcon />
+        </template>
+      </BaseInput>
+      <BaseSelect
+        v-model="select"
+        :options="['1', '2', '3', '4']"
+      >
+        <BaseInput readonly>
+          <template #prepend-icon>
+            <CountryIcon />
+          </template>
+          <template #append-icon>
+            <ArrowDownIcon></ArrowDownIcon>
+          </template>
+        </BaseInput>
+      </BaseSelect> -->
+    </div>
   </div>
 </template>
 

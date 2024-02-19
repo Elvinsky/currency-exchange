@@ -114,7 +114,6 @@
     width: fit-content;
 
     &__content {
-      margin-top: var(--space-2xl);
       min-width: 100%;
       width: fit-content;
       position: absolute;

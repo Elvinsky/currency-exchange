@@ -4,12 +4,12 @@
       <div class="header__left__logo">
         <MainLogoIcon />
       </div>
-      <BaseDropdown @clickOutside="openMenu('')">
+      <BaseDropdown
+        v-if="!isAuthPages"
+        @clickOutside="openMenu('')"
+      >
         <template #trigger>
-          <BaseButton
-            @click="openMenu('deposit')"
-            :variant="openedMenu === 'deposit' ? 'primary' : 'outlined'"
-          >
+          <BaseButton :variant="openedMenu === 'deposit' ? 'primary' : 'outlined'">
             Deposit
           </BaseButton>
         </template>
@@ -18,7 +18,10 @@
         </template>
       </BaseDropdown>
 
-      <BaseDropdown @clickOutside="openMenu('')">
+      <BaseDropdown
+        v-if="!isAuthPages"
+        @clickOutside="openMenu('')"
+      >
         <template #trigger>
           <BaseButton
             @click="openMenu('withdraw')"
@@ -72,6 +75,9 @@
   const openedMenu = ref<THeaderOpenedMenu>('');
 
   const openMenu = (menu: THeaderOpenedMenu) => {
+    if (openedMenu.value === menu) {
+      openedMenu.value = '';
+    }
     openedMenu.value = menu;
   };
 
@@ -81,13 +87,20 @@
       route.name === 'Verification' ||
       route.name === 'Registration'
   );
+
+  const gridTemplateColumns = computed(() => {
+    if (isAuthPages.value) {
+      return '0.2fr 1fr 1fr';
+    }
+    return '1fr 4fr 1fr';
+  });
 </script>
 
 <style scoped lang="scss">
   .header {
     width: 100vw;
     display: grid;
-    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-columns: v-bind(gridTemplateColumns);
     grid-auto-rows: auto;
     place-items: center;
     place-content: center;
