@@ -3,7 +3,26 @@
   --color-black-main: #111119;
   --color-gray-light: #e1e1e1;
   --color-gray-main: #88888c;
-  --color-blue--accent: #2e67ff;
+  --color-gray-hard: #3c3e3c;
+  --color-blue-primary: #2e67ff;
+  --color-blue-secondary: #225cfe;
+  --color-blue-third: #1554ff;
   --color-success: #31a667;
-  --color-alarm: #e95b2f;
+  --color-alarm-primary: #e95b2f;
+  --color-alarm-secondary: #ec4e1d;
+  --color-alarm-third: #e84615;
+
+  /* Button States */
+
+  --color-bg-button-outlined: transparent;
+  --color-bg-button-outlined-hover: var(--color-blue-primary);
+  --color-bg-button-outlined-active: var(--color-blue-secondary);
+
+  --color-bg-button-primary: var(--color-blue-primary);
+  --color-bg-button-primary-hover: var(--color-blue-secondary);
+  --color-bg-button-primary-active: var(--color-blue-third);
+
+  --color-bg-button-secondary: var(--color-alarm-primary);
+  --color-bg-button-secondary-hover: var(--color-alarm-secondary);
+  --color-bg-button-secondary-active: var(--color-alarm-third);
 }
