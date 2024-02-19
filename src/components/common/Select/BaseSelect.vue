@@ -13,6 +13,7 @@
             v-for="option in options"
             :key="option"
             class="select-list__item"
+            :class="{ 'select-list__item--selected': option === modelValue }"
             @click="updateModelValue(option)"
           >
             {{ option }}
@@ -56,7 +57,8 @@
 
   .select {
     width: 100%;
-    background: var(--color-gray-hard);
+    background: var(--color-white-main);
+    border: 1px solid var(--color-gray-secondary);
   }
 
   .select__list {
@@ -65,7 +67,7 @@
     overflow-y: auto;
 
     > .select-list__item {
-      color: var(--color-gray-light);
+      color: var(--color-gray-hard);
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -73,6 +75,14 @@
       padding: var(--space-xs) var(--space-s);
       font-size: var(--font-size-s);
       cursor: pointer;
+
+      &:hover {
+        background-color: var(--color-gray-light);
+      }
+
+      &--selected {
+        background-color: var(--color-gray-light);
+      }
     }
   }
 </style>

@@ -6,6 +6,7 @@ const router = createRouter({
     {
       path: '/',
       component: () => import('@/components/MainLayout.vue'),
+      name: 'Main',
       children: [],
     },
     {
@@ -22,13 +23,13 @@ const router = createRouter({
     },
     {
       path: '/login',
-      name: 'Registration',
+      name: 'Login',
       component: () => import('@pages/Auth/LoginPage.vue'),
       alias: ['/signin'],
     },
     {
       path: '/:catchAll(.*)',
-      redirect: { name: 'Main' },
+      redirect: { name: 'Login' },
     },
   ],
 });
