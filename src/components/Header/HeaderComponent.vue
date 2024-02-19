@@ -82,15 +82,12 @@
   };
 
   const isAuthPages = computed(
-    () =>
-      route.name === 'Registration' ||
-      route.name === 'Verification' ||
-      route.name === 'Registration'
+    () => route.name === 'Registration' || route.name === 'Verification' || route.name === 'Login'
   );
 
   const gridTemplateColumns = computed(() => {
     if (isAuthPages.value) {
-      return '0.2fr 1fr 1fr';
+      return '0.1fr 1fr 1fr';
     }
     return '1fr 4fr 1fr';
   });
