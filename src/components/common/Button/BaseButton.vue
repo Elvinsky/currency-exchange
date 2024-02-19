@@ -22,8 +22,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-top: var(--space-s);
-    padding-bottom: var(--space-s);
+    padding: var(--space-s) var(--space-l);
     width: 100%;
     transition: var(--transition-default);
     font-family: var(--font-inter-semibold);
@@ -41,14 +40,17 @@
     &--outlined:not([disabled]) {
       background-color: var(--color-bg-button-outlined);
       border: 2px solid var(--color-white-main);
+      color: var(--color-white-main);
 
       &:hover {
         background-color: var(--color-bg-button-outlined-hover);
         color: white;
+        border-color: var(--color-bg-button-outlined-hover);
       }
 
       &:active {
         background-color: var(--color-bg-button-outlined-active);
+        border-color: var(--color-bg-button-outlined-active);
       }
     }
 
