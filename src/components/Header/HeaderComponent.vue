@@ -98,7 +98,6 @@
 
 <style scoped lang="scss">
   .header {
-    width: 100vw;
     display: grid;
     grid-template-columns: v-bind(gridTemplateColumns);
     grid-auto-rows: auto;

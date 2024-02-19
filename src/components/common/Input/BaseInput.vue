@@ -50,7 +50,7 @@
     disabled: false,
     readonly: false,
     modelValue: '',
-    required: true,
+    required: false,
     min: 0,
   });
 
@@ -73,6 +73,7 @@
     align-items: start;
     gap: var(--space-2xs);
     min-width: 150px;
+    width: 100%;
 
     &__label {
       margin-left: var(--space-xs);

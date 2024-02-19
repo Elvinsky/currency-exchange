@@ -109,6 +109,7 @@
 <style scoped lang="scss">
   .dropdown {
     position: relative;
+    width: 100% !important;
     height: 100%;
     background: transparent;
     width: fit-content;
@@ -122,7 +123,6 @@
     }
 
     &__activator {
-      height: 100%;
       display: flex;
       flex-shrink: 0;
     }
