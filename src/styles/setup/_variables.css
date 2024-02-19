@@ -1,3 +1,9 @@
 :root {
-  --test: 1px;
+  /* Static Sizes */
+
+  --header-height: 80px;
+
+  /* Transitions */
+
+  --transition-default: all 0.2s ease;
 }
