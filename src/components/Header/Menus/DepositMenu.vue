@@ -11,5 +11,6 @@
     height: 360px;
     width: 540px;
     background-color: black;
+    margin-top: var(--space-2xl);
   }
 </style>

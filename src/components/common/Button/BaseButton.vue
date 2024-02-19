@@ -45,25 +45,28 @@
       &:hover {
         background-color: var(--color-bg-button-outlined-hover);
         color: white;
-        border-color: var(--color-bg-button-outlined-hover);
+        border: 2px solid var(--color-bg-button-outlined-hover);
       }
 
       &:active {
         background-color: var(--color-bg-button-outlined-active);
-        border-color: var(--color-bg-button-outlined-active);
+        border: 2px solid var(--color-bg-button-outlined-active);
       }
     }
 
     &--primary:not([disabled]) {
       background-color: var(--color-bg-button-primary);
+      border: 2px solid var(--color-bg-button-primary);
       color: var(--color-white-main);
 
       &:hover {
         background-color: var(--color-bg-button-primary-hover);
+        border: 2px solid var(--color-bg-button-primary-hover);
       }
 
       &:active {
         background-color: var(--color-bg-button-primary-active);
+        border: 2px solid var(--color-bg-button-primary-active);
       }
     }
 

@@ -9,7 +9,10 @@
         @clickOutside="openMenu('')"
       >
         <template #trigger>
-          <BaseButton :variant="openedMenu === 'deposit' ? 'primary' : 'outlined'">
+          <BaseButton
+            @click="openMenu('deposit')"
+            :variant="openedMenu === 'deposit' ? 'primary' : 'outlined'"
+          >
             Deposit
           </BaseButton>
         </template>
@@ -27,8 +30,8 @@
             @click="openMenu('withdraw')"
             :variant="openedMenu === 'withdraw' ? 'primary' : 'outlined'"
           >
-            Withdraw</BaseButton
-          >
+            Withdraw
+          </BaseButton>
         </template>
         <template #content>
           <WithdrawMenu />
@@ -75,10 +78,11 @@
   const openedMenu = ref<THeaderOpenedMenu>('');
 
   const openMenu = (menu: THeaderOpenedMenu) => {
-    if (openedMenu.value === menu) {
+    if (openedMenu.value == menu) {
       openedMenu.value = '';
+    } else {
+      openedMenu.value = menu;
     }
-    openedMenu.value = menu;
   };
 
   const isAuthPages = computed(
@@ -89,7 +93,7 @@
     if (isAuthPages.value) {
       return '0.1fr 1fr 1fr';
     }
-    return '1fr 4fr 1fr';
+    return '1fr 5fr 1fr';
   });
 </script>
 

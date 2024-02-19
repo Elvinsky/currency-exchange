@@ -15,6 +15,6 @@
     overflow-x: hidden;
     flex-direction: column;
     background-color: var(--color-gray-light);
-    height: 100vw;
+    height: 100vh;
   }
 </style>

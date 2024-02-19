@@ -1,3 +1,8 @@
+import MainLayout from '@/components/MainLayout.vue';
+import IDVerificationPage from '@/pages/Auth/IDVerificationPage.vue';
+import LoginPage from '@/pages/Auth/LoginPage.vue';
+import SignupPage from '@/pages/Auth/SignupPage.vue';
+import DashboardPage from '@/pages/DashboardPage.vue';
 import { createRouter, createWebHistory } from 'vue-router';
 
 const router = createRouter({
@@ -5,26 +10,33 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      component: () => import('@/components/MainLayout.vue'),
+      component: MainLayout,
       name: 'Main',
-      children: [],
+      redirect: { name: 'Dashboard' },
+      children: [
+        {
+          path: '/dashboard',
+          name: 'Dashboard',
+          component: DashboardPage,
+        },
+      ],
     },
     {
       path: '/registration',
       name: 'Registration',
-      component: () => import('@pages/Auth/SignupPage.vue'),
+      component: SignupPage,
       alias: ['/signup', '/reg'],
     },
     {
       path: '/verification',
       name: 'Verification',
-      component: () => import('@pages/Auth/IDVerificationPage.vue'),
+      component: IDVerificationPage,
       alias: ['/verif'],
     },
     {
       path: '/login',
       name: 'Login',
-      component: () => import('@pages/Auth/LoginPage.vue'),
+      component: LoginPage,
       alias: ['/signin'],
     },
     {

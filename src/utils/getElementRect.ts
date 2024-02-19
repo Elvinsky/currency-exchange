@@ -4,6 +4,7 @@ export const getElementRect = (
   wWidth: number,
   wHeight: number
 ): DOMRect => {
+  if (!el || !parent || !wWidth || !wHeight) return new DOMRect();
   const clone = el.cloneNode(true) as HTMLElement;
   const parentWidth = parent.clientWidth as number;
   const parentHeight = parent.clientHeight as number;

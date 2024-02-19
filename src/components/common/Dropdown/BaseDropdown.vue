@@ -29,7 +29,7 @@
 
 <script setup lang="ts">
   import { onClickOutside } from '@vueuse/core';
-  import { computed, onMounted, ref } from 'vue';
+  import { computed, nextTick, onMounted, ref } from 'vue';
 
   import { constVoid } from '@/utils/function';
   import { getElementRect } from '@/utils/getElementRect';
@@ -102,7 +102,9 @@
   };
 
   onMounted(() => {
-    setContentPosition();
+    nextTick(() => {
+      setContentPosition();
+    });
   });
 </script>
 
