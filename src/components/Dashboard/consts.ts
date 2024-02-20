@@ -7,18 +7,22 @@ export const currencyDashboardMcokedHeaders: ITableHeaders[] = [
     field: 'price',
     key: 'price',
     label: 'Price',
+    align: 'start',
+    alignRows: 'start',
   },
   {
     id: '2',
     field: 'amount',
     key: 'amount',
     label: 'Amount',
+    align: 'end',
   },
   {
     id: '3',
     field: 'total',
     key: 'total',
     label: 'Total',
+    align: 'end',
   },
 ];
 

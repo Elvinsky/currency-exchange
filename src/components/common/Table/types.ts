@@ -3,6 +3,8 @@ export interface ITableHeaders {
   field: string;
   key: string;
   label: string;
+  align?: 'center' | 'end' | 'start' | 'justify';
+  alignRows?: 'center' | 'end' | 'start' | 'justify';
 }
 
 export interface ITableRows {
@@ -12,4 +14,5 @@ export interface ITableRows {
 export interface ITableProps {
   rows: ITableRows[];
   headers: ITableHeaders[];
+  maxHeight?: string;
 }

@@ -12,6 +12,6 @@
     overflow-x: hidden;
     flex-direction: column;
     background-color: var(--color-gray-light);
-    height: 100vh;
+    height: calc(100vh - var(--header-height));
   }
 </style>
