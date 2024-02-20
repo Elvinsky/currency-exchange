@@ -1,13 +1,10 @@
 <template>
   <div class="wrapper">
-    <HeaderComponent />
     <RouterView />
   </div>
 </template>
 
-<script setup lang="ts">
-  import HeaderComponent from '@/components/Header/HeaderComponent.vue';
-</script>
+<script setup lang="ts"></script>
 
 <style scoped lang="scss">
   .wrapper {

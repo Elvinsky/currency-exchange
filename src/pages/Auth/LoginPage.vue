@@ -1,5 +1,4 @@
 <template>
-  <HeaderComponent />
   <div class="login">
     <div class="login__content">
       <h2 class="login__content__header2">Log in</h2>
@@ -53,7 +52,6 @@
 <script setup lang="ts">
   import EmailIcon from '@/assets/icons/SignUp/EmailIcon.vue';
   import PasswordIcon from '@/assets/icons/SignUp/PasswordIcon.vue';
-  import HeaderComponent from '@/components/Header/HeaderComponent.vue';
   import BaseButton from '@/components/common/Button/BaseButton.vue';
   import BaseInput from '@/components/common/Input/BaseInput.vue';
   import router from '@/router';
@@ -122,3 +120,4 @@
     }
   }
 </style>
+@/pages/router

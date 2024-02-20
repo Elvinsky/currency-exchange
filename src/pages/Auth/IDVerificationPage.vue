@@ -1,5 +1,4 @@
 <template>
-  <HeaderComponent />
   <div class="verification">
     <div class="verification__content">
       <h2 class="verification__content__h2">Almost done, one step left</h2>
@@ -36,7 +35,6 @@
 <script setup lang="ts">
   import LicenseIcon from '@/assets/icons/KYC/LicenseIcon.vue';
   import PassportIcon from '@/assets/icons/KYC/PassportIcon.vue';
-  import HeaderComponent from '@/components/Header/HeaderComponent.vue';
   import BaseButton from '@/components/common/Button/BaseButton.vue';
   import router from '@/router';
 
@@ -118,3 +116,4 @@
     }
   }
 </style>
+@/pages/router

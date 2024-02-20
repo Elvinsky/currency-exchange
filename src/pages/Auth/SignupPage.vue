@@ -1,5 +1,4 @@
 <template>
-  <HeaderComponent />
   <div class="login">
     <div class="login__content">
       <h2 class="login__content__header2">Sign up</h2>
@@ -97,7 +96,6 @@
   import PasswordIcon from '@/assets/icons/SignUp/PasswordIcon.vue';
   import PhoneIcon from '@/assets/icons/SignUp/PhoneIcon.vue';
   import RequiredIcon from '@/assets/icons/SignUp/RequiredIcon.vue';
-  import HeaderComponent from '@/components/Header/HeaderComponent.vue';
   import BaseButton from '@/components/common/Button/BaseButton.vue';
   import BaseInput from '@/components/common/Input/BaseInput.vue';
   import BaseSelect from '@/components/common/Select/BaseSelect.vue';
@@ -171,3 +169,4 @@
     }
   }
 </style>
+@/pages/router
