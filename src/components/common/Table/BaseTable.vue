@@ -5,6 +5,7 @@
         v-for="header in headers"
         :key="header.id"
         class="cell cell__header"
+        :style="{ textAlign: header.align ? header.align : 'center' }"
       >
         <slot
           :name="`${header.key}-header`"
@@ -22,6 +23,7 @@
             v-for="header in headers"
             class="cell"
             :key="header.id"
+            :style="{ textAlign: header.alignRows ? header.alignRows : 'end' }"
           >
             <slot
               :name="`${header.field}-row`"
@@ -47,13 +49,27 @@
     overflow: hidden;
     display: grid;
     grid-template-rows: auto auto;
-    grid-gap: 10px;
+    max-height: v-bind(maxHeight);
+    overflow-y: hidden;
 
     &__wrapper {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
-      grid-gap: 1px;
       overflow: auto;
+    }
+
+    .cell {
+      padding: 4px;
+      text-align: end;
+      font-family: var(--font-inter-medium);
+      font-size: var(--font-size-s);
+
+      &__header {
+        margin-bottom: 20px;
+        font-family: var(--font-inter-bold);
+        font-size: var(--font-size-xs);
+        color: var(--color-gray-main);
+      }
     }
   }
 </style>
