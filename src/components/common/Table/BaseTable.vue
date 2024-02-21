@@ -40,8 +40,16 @@
 </template>
 
 <script setup lang="ts">
+  import { computed } from 'vue';
   import type { ITableProps } from './types';
-  defineProps<ITableProps>();
+  const props = defineProps<ITableProps>();
+
+  const gridTemplateColumns = computed(() =>
+    props.headers.reduce((acc, column) => {
+      const columnWidth = column.width || '1fr';
+      return `${acc} ${columnWidth}`;
+    }, '')
+  );
 </script>
 
 <style scoped lang="scss">
@@ -54,7 +62,7 @@
 
     &__wrapper {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-columns: v-bind(gridTemplateColumns);
       overflow: auto;
     }
 

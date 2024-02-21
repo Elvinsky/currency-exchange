@@ -53,10 +53,9 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: var(--color-white-main);
   }
 
-  * > .bordered {
+  .bordered {
     border-bottom: 2px solid var(--color-gray-light);
     border-top: 2px solid var(--color-gray-light);
     padding-top: 10px;
