@@ -5,6 +5,7 @@ export interface ITableHeaders {
   label: string;
   align?: 'center' | 'end' | 'start' | 'justify';
   alignRows?: 'center' | 'end' | 'start' | 'justify';
+  width?: string;
 }
 
 export interface ITableRows {
