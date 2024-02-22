@@ -1,14 +1,14 @@
 <template>
   <div class="dashboard">
     <DashboardLayout>
-      <BalancesTable />
+      <LastTransactionsDashboard />
     </DashboardLayout>
   </div>
 </template>
 
 <script setup lang="ts">
-  import BalancesTable from '@/components/Dashboard/BalancesTable.vue';
   import DashboardLayout from '@/components/Dashboard/DashboardLayout.vue';
+  import LastTransactionsDashboard from '@/components/Dashboard/LastTransactionsDashboard.vue';
 </script>
 
 <style scoped lang="scss">
@@ -18,5 +18,6 @@
     gap: 20px;
     align-items: center;
     justify-content: center;
+    height: 100%;
   }
 </style>
