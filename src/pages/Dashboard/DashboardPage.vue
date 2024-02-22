@@ -1,13 +1,13 @@
 <template>
   <div class="dashboard">
     <DashboardLayout>
-      <CurrencyTradingForm />
+      <BalancesTable />
     </DashboardLayout>
   </div>
 </template>
 
 <script setup lang="ts">
-  import CurrencyTradingForm from '@/components/Dashboard/CurrencyTradingForm.vue';
+  import BalancesTable from '@/components/Dashboard/BalancesTable.vue';
   import DashboardLayout from '@/components/Dashboard/DashboardLayout.vue';
 </script>
 
@@ -18,6 +18,5 @@
     gap: 20px;
     align-items: center;
     justify-content: center;
-    width: 1000px;
   }
 </style>

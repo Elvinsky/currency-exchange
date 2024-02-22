@@ -1,6 +1,202 @@
 import type { ITableHeaders } from '@/components/common/Table/types';
-import type { IActionColumnFileds, ICurrencyColumnsFields, IDashboardRows } from './types';
+import type {
+  IActionColumnFileds,
+  ITransactionsColumnFields,
+  ICurrencyColumnsFields,
+  IDashboardRows,
+  IBalancesColumnFields,
+} from './types';
 import type { ISlideSelectModelValue } from '../common/SlideSelect/types';
+
+export const balancesDashboardMockedHeaders: ITableHeaders[] = [
+  {
+    id: '1',
+    field: 'vault',
+    key: 'vault',
+    label: 'VAULT',
+    align: 'start',
+    alignRows: 'start',
+    width: '1fr',
+  },
+  {
+    id: '2',
+    field: 'quote',
+    key: 'quote',
+    label: 'QUOTE',
+    align: 'start',
+    alignRows: 'start',
+    width: '1fr',
+  },
+  {
+    id: '3',
+    field: 'free',
+    key: 'free',
+    label: 'FREE',
+    align: 'end',
+    alignRows: 'end',
+    width: '2fr',
+  },
+  {
+    id: '4',
+    field: 'locked',
+    key: 'locked',
+    label: 'LOCKED',
+    align: 'end',
+    alignRows: 'end',
+    width: '2fr',
+  },
+];
+
+export const balancesDashboardMockedData: IDashboardRows<IBalancesColumnFields>[] = [
+  {
+    id: '1',
+    vault: 'MM1',
+    quote: 'SFT',
+    free: 10656.83,
+    locked: 0,
+  },
+  {
+    id: '2',
+    vault: 'MM2',
+    quote: 'USDC',
+    free: 0,
+    locked: 18493.37,
+  },
+  {
+    id: '3',
+    vault: 'Spread',
+    quote: 'ETH',
+    free: 2518512.02,
+    locked: 0,
+  },
+  {
+    id: '4',
+    vault: 'Price',
+    quote: 'BTC',
+    free: 1.13,
+    locked: 0,
+  },
+];
+
+export const transactionsDashboardMockedHeaders: ITableHeaders[] = [
+  {
+    id: '1',
+    field: 'time',
+    key: 'time',
+    label: 'TIME',
+    align: 'start',
+    alignRows: 'start',
+  },
+  {
+    id: '2',
+    field: 'amount',
+    key: 'amount',
+    label: 'AMOUNT',
+    align: 'end',
+    alignRows: 'end',
+  },
+  {
+    id: '3',
+    field: 'price',
+    key: 'price',
+    label: 'PRICE',
+    align: 'end',
+    alignRows: 'end',
+  },
+];
+
+export const transactionsDashboardMockedData: IDashboardRows<ITransactionsColumnFields>[] = [
+  {
+    id: '1',
+    time: '20:55:08',
+    amount: 87903,
+    price: 1.0008,
+  },
+  {
+    id: '2',
+    time: '21:30:15',
+    amount: 456789,
+    price: 1.0009,
+  },
+  {
+    id: '3',
+    time: '20:15:42',
+    amount: 123456,
+    price: 1.0005,
+  },
+  {
+    id: '4',
+    time: '20:45:33',
+    amount: 789012,
+    price: 1.0007,
+  },
+  {
+    id: '5',
+    time: '21:10:20',
+    amount: 234567,
+    price: 1.0006,
+  },
+  {
+    id: '6',
+    time: '20:25:50',
+    amount: 567890,
+    price: 1.0004,
+  },
+  {
+    id: '7',
+    time: '21:15:18',
+    amount: 345678,
+    price: 1.0003,
+  },
+  {
+    id: '8',
+    time: '20:35:05',
+    amount: 678901,
+    price: 1.0002,
+  },
+  {
+    id: '9',
+    time: '20:05:28',
+    amount: 890123,
+    price: 1.0001,
+  },
+  {
+    id: '10',
+    time: '21:50:47',
+    amount: 123789,
+    price: 1.001,
+  },
+  {
+    id: '11',
+    time: '20:40:12',
+    amount: 456321,
+    price: 1.0008,
+  },
+  {
+    id: '12',
+    time: '20:00:59',
+    amount: 987654,
+    price: 1.0009,
+  },
+  {
+    id: '13',
+    time: '21:25:25',
+    amount: 321098,
+    price: 1.0005,
+  },
+  {
+    id: '14',
+    time: '20:20:36',
+    amount: 654321,
+    price: 1.0007,
+  },
+  {
+    id: '15',
+    time: '21:45:55',
+    amount: 789012,
+    price: 1.001,
+  },
+];
 
 export const actionsDashboardMockedHeaders: ITableHeaders[] = [
   {
