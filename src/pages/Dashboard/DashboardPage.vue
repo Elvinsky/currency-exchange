@@ -1,25 +1,13 @@
 <template>
   <div class="dashboard">
-    <div class="dashboard__currency">
-      <DashboardLayout>
-        <template #content>
-          <CurrencyDashboard />
-        </template>
-      </DashboardLayout>
-    </div>
-    <div class="dashboard__actions-apply">
-      <DashboardLayout>
-        <template #content>
-          <ActionDashboard />
-        </template>
-      </DashboardLayout>
-    </div>
+    <DashboardLayout>
+      <CurrencyTradingForm />
+    </DashboardLayout>
   </div>
 </template>
 
 <script setup lang="ts">
-  import ActionDashboard from '@/components/Dashboard/ActionDashboard.vue';
-  import CurrencyDashboard from '@/components/Dashboard/CurrencyDashboard.vue';
+  import CurrencyTradingForm from '@/components/Dashboard/CurrencyTradingForm.vue';
   import DashboardLayout from '@/components/Dashboard/DashboardLayout.vue';
 </script>
 
@@ -30,5 +18,6 @@
     gap: 20px;
     align-items: center;
     justify-content: center;
+    width: 1000px;
   }
 </style>

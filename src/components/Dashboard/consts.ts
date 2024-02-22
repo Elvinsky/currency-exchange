@@ -1,5 +1,6 @@
 import type { ITableHeaders } from '@/components/common/Table/types';
 import type { IActionColumnFileds, ICurrencyColumnsFields, IDashboardRows } from './types';
+import type { ISlideSelectModelValue } from '../common/SlideSelect/types';
 
 export const actionsDashboardMockedHeaders: ITableHeaders[] = [
   {
@@ -266,4 +267,15 @@ export const currencyDashboardMockedData: IDashboardRows<ICurrencyColumnsFields>
     amount: 9876543,
     total: 78901234,
   },
+];
+
+export const tokenSlideSelectOptions: ISlideSelectModelValue[] = [
+  { id: '1', label: 'BTC' },
+  { id: '2', label: 'SFT' },
+];
+
+export const orderTypeSlideSelectOptions: ISlideSelectModelValue[] = [
+  { id: '1', label: 'Market' },
+  { id: '2', label: 'Limit' },
+  { id: '3', label: 'TWAP' },
 ];
