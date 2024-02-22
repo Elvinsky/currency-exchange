@@ -72,6 +72,8 @@
     }
 
     .cell {
+      padding-top: 4px;
+      padding-bottom: 4px;
       text-align: end;
       font-family: var(--font-inter-medium);
       font-size: var(--font-size-s);

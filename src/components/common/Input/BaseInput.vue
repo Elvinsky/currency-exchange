@@ -1,6 +1,9 @@
 <template>
   <div class="input">
-    <label :class="['input__label', { 'input__label--error': error }]">
+    <label
+      :class="['input__label', { 'input__label--error': error }]"
+      v-if="label"
+    >
       {{ label }}
     </label>
     <div

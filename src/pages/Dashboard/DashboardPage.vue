@@ -1,13 +1,13 @@
 <template>
   <div class="dashboard">
     <DashboardLayout>
-      <BalancesTable />
+      <AddActionsForm />
     </DashboardLayout>
   </div>
 </template>
 
 <script setup lang="ts">
-  import BalancesTable from '@/components/Dashboard/BalancesTable.vue';
+  import AddActionsForm from '@/components/Dashboard/AddActionsForm.vue';
   import DashboardLayout from '@/components/Dashboard/DashboardLayout.vue';
 </script>
 
@@ -18,5 +18,6 @@
     gap: 20px;
     align-items: center;
     justify-content: center;
+    height: 100%;
   }
 </style>
