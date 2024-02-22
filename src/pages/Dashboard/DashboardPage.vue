@@ -1,14 +1,14 @@
 <template>
   <div class="dashboard">
     <DashboardLayout>
-      <LastTransactionsDashboard />
+      <AddActionsForm />
     </DashboardLayout>
   </div>
 </template>
 
 <script setup lang="ts">
+  import AddActionsForm from '@/components/Dashboard/AddActionsForm.vue';
   import DashboardLayout from '@/components/Dashboard/DashboardLayout.vue';
-  import LastTransactionsDashboard from '@/components/Dashboard/LastTransactionsDashboard.vue';
 </script>
 
 <style scoped lang="scss">
