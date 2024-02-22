@@ -22,6 +22,10 @@
           <div
             v-for="header in headers"
             class="cell"
+            :class="{
+              'cell__lined cell__lined--underlined': rows[rowIdx + 1] && lined,
+              cell__lined: !rows[rowIdx + 1] && lined,
+            }"
             :key="header.id"
             :style="{ textAlign: header.alignRows ? header.alignRows : 'end' }"
           >
@@ -59,6 +63,7 @@
     grid-template-rows: auto auto;
     max-height: v-bind(maxHeight);
     overflow-y: hidden;
+    width: 100%;
 
     &__wrapper {
       display: grid;
@@ -67,7 +72,6 @@
     }
 
     .cell {
-      padding: 4px;
       text-align: end;
       font-family: var(--font-inter-medium);
       font-size: var(--font-size-s);
@@ -77,6 +81,15 @@
         font-family: var(--font-inter-bold);
         font-size: var(--font-size-xs);
         color: var(--color-gray-main);
+      }
+
+      &__lined {
+        padding-top: var(--space-s);
+        padding-bottom: var(--space-s);
+
+        &--underlined {
+          border-bottom: 1px solid var(--color-gray-light);
+        }
       }
     }
   }

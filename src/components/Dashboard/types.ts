@@ -16,6 +16,21 @@ export interface IActionColumnFileds {
   action: boolean;
 }
 
+export interface ITransactionsColumnFields {
+  id: string;
+  time: string;
+  amount: number;
+  price: number;
+}
+
+export interface IBalancesColumnFields {
+  id: string;
+  vault: string;
+  quote: string;
+  free: number;
+  locked: number;
+}
+
 export type IDashboardRows<T> = {
   [key in keyof T]: T[key];
 };

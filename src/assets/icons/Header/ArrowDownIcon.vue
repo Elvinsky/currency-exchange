@@ -9,7 +9,6 @@
     <path
       d="M5 4.5L0 0.5H10L5 4.5Z"
       fill="white"
-      style="fill: white; fill-opacity: 1"
     />
   </svg>
 </template>
