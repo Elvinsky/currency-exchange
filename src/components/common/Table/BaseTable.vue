@@ -62,13 +62,11 @@
     display: grid;
     grid-template-rows: auto auto;
     max-height: v-bind(maxHeight);
-    overflow-y: hidden;
     width: 100%;
 
     &__wrapper {
       display: grid;
       grid-template-columns: v-bind(gridTemplateColumns);
-      overflow: auto;
     }
 
     .cell {

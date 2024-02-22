@@ -325,12 +325,14 @@ export const currencyDashboardMcokedHeaders: ITableHeaders[] = [
     label: 'PRICE',
     align: 'start',
     alignRows: 'start',
+    width: '0.5fr',
   },
   {
     id: '2',
     field: 'amount',
     key: 'amount',
     label: 'AMOUNT',
+    width: '1fr',
     align: 'end',
   },
   {
@@ -339,6 +341,7 @@ export const currencyDashboardMcokedHeaders: ITableHeaders[] = [
     key: 'total',
     label: 'TOTAL',
     align: 'end',
+    width: '1fr',
   },
 ];
 
@@ -360,18 +363,6 @@ export const currencyDashboardMockedData: IDashboardRows<ICurrencyColumnsFields>
     price: 1.0012,
     amount: 8812032,
     total: 89919232,
-  },
-  {
-    id: '4',
-    price: 1.0011,
-    amount: 367256,
-    total: 8994234,
-  },
-  {
-    id: '5',
-    price: 1.001,
-    amount: 23422,
-    total: 78901234,
   },
   {
     id: '6',

@@ -106,7 +106,7 @@
     align-items: start;
     justify-content: center;
     gap: var(--space-xl);
-    width: 700px;
+    width: 648px;
 
     &__zero {
       color: var(--color-gray-main);

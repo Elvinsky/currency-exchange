@@ -3,6 +3,7 @@
     <BaseTable
       :headers="actionsDashboardMockedHeaders"
       :rows="actionsDashboardMockedData"
+      lined
     >
       <template #trigger-row="{ row }">
         <div class="trigger">&lt; {{ row.trigger }}</div>
@@ -44,6 +45,10 @@
 </script>
 
 <style scoped lang="scss">
+  .dashboard {
+    width: 700px;
+    height: 300px;
+  }
   .trigger {
     display: flex;
     align-items: center;

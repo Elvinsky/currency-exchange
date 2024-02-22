@@ -13,13 +13,10 @@
 <style scoped lang="scss">
   .layout {
     display: flex;
-    align-items: start;
-    justify-content: start;
-    padding: var(--space-l);
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-m);
     background-color: var(--color-white-main);
-    gap: var(--space-xl);
-    width: 100%;
-    height: 100%;
     overflow: hidden;
   }
 </style>

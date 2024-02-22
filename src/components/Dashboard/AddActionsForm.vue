@@ -108,7 +108,7 @@
     align-items: start;
     justify-content: center;
     gap: var(--space-xl);
-    width: 1400px;
+    width: 1393px;
 
     &__header {
       font-family: var(--font-inter-bold);

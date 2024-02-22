@@ -6,4 +6,6 @@ export interface ISlideSelectModelValue {
 export interface ISlideSelectProps {
   modelValue: ISlideSelectModelValue;
   options: ISlideSelectModelValue[];
+  backgroundColor?: string;
+  label?: string;
 }

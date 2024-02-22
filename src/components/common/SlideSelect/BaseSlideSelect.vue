@@ -1,7 +1,10 @@
 <template>
   <div class="wrapper">
-    <div class="label">
-      <slot name="label"></slot>
+    <div
+      class="label"
+      v-if="label"
+    >
+      <p>{{ label }}</p>
     </div>
     <div class="slide-select">
       <div
@@ -26,14 +29,17 @@
 </template>
 
 <script setup lang="ts">
+  import { computed } from 'vue';
   import type { ISlideSelectModelValue, ISlideSelectProps } from './types';
-  defineProps<ISlideSelectProps>();
+  const props = defineProps<ISlideSelectProps>();
 
   const emits = defineEmits<(e: 'update:modelValue', value: ISlideSelectModelValue) => void>();
 
   const selectItem = (option: ISlideSelectModelValue) => {
     emits('update:modelValue', option);
   };
+
+  const backGroundColorComp = computed(() => props.backgroundColor || 'transparent');
 </script>
 
 <style scoped lang="scss">
@@ -46,6 +52,8 @@
     color: var(--color-gray-main);
     font-family: var(--font-inter-bold);
     font-size: var(--font-size-xs);
+    width: 100%;
+
     .slide-select {
       display: flex;
       flex-direction: row;
@@ -56,6 +64,7 @@
       border: 1px solid var(--color-gray-light);
       border-radius: 2px;
       width: 100%;
+      background-color: v-bind(backGroundColorComp);
 
       &__item {
         color: var(--color-gray-main);

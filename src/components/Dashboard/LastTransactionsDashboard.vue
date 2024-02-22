@@ -60,7 +60,8 @@
     align-items: start;
     justify-content: center;
     gap: var(--space-xl);
-    width: 450px;
+    width: 419px;
+    height: 486px;
 
     &__label {
       display: flex;

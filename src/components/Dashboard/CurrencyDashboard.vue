@@ -50,6 +50,7 @@
 <style scoped lang="scss">
   .dashboard {
     display: flex;
+    width: 420px;
     flex-direction: column;
     align-items: center;
     justify-content: center;
