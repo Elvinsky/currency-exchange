@@ -71,14 +71,14 @@
     display: flex;
     flex-direction: column;
     align-items: start;
-    gap: var(--space-2xs);
+    gap: var(--space-s);
     min-width: 150px;
     width: 100%;
 
     &__label {
-      margin-left: var(--space-xs);
-      font-size: var(--font-size-s);
-      font-family: var(--font-inter-medium);
+      color: var(--color-gray-main);
+      font-family: var(--font-inter-bold);
+      font-size: var(--font-size-xs);
 
       &--error {
         color: var(--color-alarm-primary);
@@ -101,7 +101,7 @@
         width: 100%;
         background: transparent;
         font-family: var(--font-inter-medium);
-        color: var(--color-gray-hard);
+        color: var(--color-gray-main);
       }
 
       &:hover {

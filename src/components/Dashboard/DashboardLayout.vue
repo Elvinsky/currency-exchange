@@ -1,10 +1,7 @@
 <template>
   <div class="layout">
-    <div class="layout__top">
-      <slot name="top"></slot>
-    </div>
     <div class="layout__dashboard">
-      <slot name="content"></slot>
+      <slot></slot>
     </div>
   </div>
 </template>
