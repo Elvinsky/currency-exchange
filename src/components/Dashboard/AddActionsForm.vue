@@ -110,6 +110,10 @@
     gap: var(--space-xl);
     width: 1393px;
 
+    @include w-max($xxxl) {
+      width: 1093px;
+    }
+
     &__header {
       font-family: var(--font-inter-bold);
       font-size: var(--font-size-xs);

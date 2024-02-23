@@ -8,6 +8,10 @@
       <template #trigger-row="{ row }">
         <div class="trigger">&lt; {{ row.trigger }}</div>
       </template>
+      <template #price-row="{ row }">
+        <div class="trigger--colorless">{{ row.price }}</div>
+      </template>
+
       <template #side-header="{ column }">
         <div class="side">
           {{ column.label }}
@@ -48,6 +52,10 @@
   .dashboard {
     width: 700px;
     height: 300px;
+
+    @include w-max($xxxl) {
+      width: 550px;
+    }
   }
   .trigger {
     display: flex;
@@ -58,6 +66,17 @@
     color: var(--color-black-main);
     font-family: var(--font-inter-semibold);
     width: fit-content;
+
+    &--colorless {
+      border: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: var(--space-2xs);
+      color: var(--color-black-main);
+      font-family: var(--font-inter-semibold);
+      width: fit-content;
+    }
   }
 
   .side {

@@ -63,6 +63,10 @@
     width: 419px;
     height: 486px;
 
+    @include w-max($xxxl) {
+      width: 319px;
+    }
+
     &__label {
       display: flex;
       flex-direction: row;

@@ -134,6 +134,10 @@
       gap: var(--space-s);
       width: 960px;
 
+      @include w-max($xxxl) {
+        width: 760px;
+      }
+
       &__settings {
         display: grid;
         grid-template-columns: 6fr 0.5fr 0.5fr;
@@ -162,16 +166,28 @@
             background-color: var(--color-white-main);
             padding: 4px 10px;
 
+            @include w-max($xxxl) {
+              padding: 4px 4px;
+            }
+
             &__prefix {
               font-family: var(--font-inter-semibold);
               color: var(--color-gray-main);
               font-size: var(--font-size-m);
+
+              @include w-max($xxxl) {
+                font-size: var(--font-size-s);
+              }
             }
 
             &__content {
               font-family: var(--font-inter-semibold);
               color: var(--color-black-main);
               font-size: var(--font-size-m);
+
+              @include w-max($xxxl) {
+                font-size: var(--font-size-s);
+              }
             }
           }
         }
@@ -179,9 +195,12 @@
 
       &__chart {
         width: 960px;
-
         height: 570px;
         background-color: white;
+
+        @include w-max($xxxl) {
+          width: 760px;
+        }
       }
     }
 
@@ -199,6 +218,11 @@
         justify-content: center;
         width: 100%;
         gap: 12px;
+
+        @include w-max($xxxl) {
+          align-items: start;
+          justify-content: start;
+        }
 
         &--bgwhite {
           background-color: var(--color-white-main);

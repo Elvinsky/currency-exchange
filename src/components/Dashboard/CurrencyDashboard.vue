@@ -54,6 +54,10 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    @include w-max($xxxl) {
+      width: 320px;
+    }
   }
 
   .bordered {

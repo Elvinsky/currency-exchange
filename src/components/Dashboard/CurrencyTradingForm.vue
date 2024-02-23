@@ -86,6 +86,10 @@
     gap: var(--space-l);
     padding: var(--space-l);
 
+    @include w-max($xxxl) {
+      width: 320px;
+    }
+
     &__select-choise {
       width: 100%;
 

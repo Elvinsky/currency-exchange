@@ -108,6 +108,10 @@
     gap: var(--space-xl);
     width: 648px;
 
+    @include w-max($xxxl) {
+      width: 548px;
+    }
+
     &__zero {
       color: var(--color-gray-main);
     }
