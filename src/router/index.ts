@@ -1,5 +1,4 @@
 import MainLayout from '@/components/MainLayout.vue';
-import TestComponent from '@/components/TestComponent.vue';
 import IDVerificationPage from '@/pages/Auth/IDVerificationPage.vue';
 import LoginPage from '@/pages/Auth/LoginPage.vue';
 import SignupPage from '@/pages/Auth/SignupPage.vue';
@@ -19,11 +18,6 @@ const router = createRouter({
           path: '/dashboard',
           name: 'Dashboard',
           component: DashboardPage,
-        },
-        {
-          path: '/test',
-          name: 'Test',
-          component: TestComponent,
         },
       ],
     },

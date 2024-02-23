@@ -16,11 +16,12 @@
             :class="{ 'select-list__item--selected': option === modelValue }"
             @click="updateModelValue(option)"
           >
-            {{ option }}
-            <RequiredIcon
-              v-if="option === modelValue"
-              class="custom-icon"
-            />
+            <slot :name="`${option.replaceAll(' ', '')}-option`">
+              {{ option }}
+              <RequiredIcon
+                v-if="option === modelValue"
+                class="custom-icon"
+            /></slot>
           </li>
         </ul>
       </div>

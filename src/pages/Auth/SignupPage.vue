@@ -46,6 +46,7 @@
           </template>
         </BaseInput>
         <BaseSelect
+          closeOnClick
           v-model="userSelect"
           :options="selectOptions"
         >

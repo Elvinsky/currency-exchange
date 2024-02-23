@@ -30,4 +30,5 @@ export interface IBaseInputProps {
   readonly?: boolean;
   min?: number;
   required?: boolean;
+  backGroundColor?: string;
 }

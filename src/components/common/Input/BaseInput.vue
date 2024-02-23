@@ -55,6 +55,7 @@
     modelValue: '',
     required: false,
     min: 0,
+    backGroundColor: 'transaparent',
   });
 
   const emits = defineEmits<(e: 'update:modelValue', value: string) => void>();
@@ -98,6 +99,7 @@
       align-items: center;
       padding: var(--space-xs);
       font-size: var(--font-size-m);
+      background-color: v-bind(backGroundColor);
       border: 1px solid var(--color-gray-light);
       width: 100%;
 
@@ -106,7 +108,7 @@
         padding-left: var(--space-xs);
         padding-right: var(--space-xs);
         width: 100%;
-        background: transparent;
+        background-color: v-bind(backGroundColor);
         font-family: var(--font-inter-medium);
         color: var(--color-gray-main);
       }

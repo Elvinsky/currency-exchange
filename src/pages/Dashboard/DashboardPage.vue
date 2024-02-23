@@ -22,6 +22,7 @@
     <div class="dashboard__currency">
       <div class="dashboard__currency__settings-bar">
         <BaseSelect
+          closeOnClick
           class="dashboard__currency__settings-bar__select"
           :options="['Bitcoin / Sport Fusion Token']"
           v-model="purchaseSelect"

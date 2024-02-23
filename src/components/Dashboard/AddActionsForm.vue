@@ -7,6 +7,7 @@
         @submit.prevent
       >
         <BaseSelect
+          closeOnClick
           v-model="userInput.module"
           :options="['ALGO', 'TWAP', 'TEST']"
         >

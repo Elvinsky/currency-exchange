@@ -37,7 +37,7 @@
 
   const props = withDefaults(defineProps<IDropdownProps>(), {
     closeOnClickOutside: true,
-    closeOnClick: true,
+    closeOnClick: false,
   });
 
   const emit = defineEmits<{

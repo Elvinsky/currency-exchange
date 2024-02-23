@@ -3,6 +3,7 @@
     <div class="transactions__label">
       <h3>LAST TRANSACTIONS</h3>
       <BaseSelect
+        closeOnClick
         :options="['ALL', '4H', '8H', '12H', '24H']"
         v-model="userSelect"
       >

@@ -4,6 +4,7 @@
       <div class="actions__top__left">
         <h3>ACTION</h3>
         <BaseSelect
+          closeOnClick
           :options="['ALGO', 'TEST1', 'TEST2']"
           v-model="userSelect"
         >
