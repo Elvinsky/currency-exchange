@@ -58,17 +58,20 @@
 
 <style scoped lang="scss">
   .table {
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: scroll;
     display: grid;
     grid-template-rows: auto auto;
-    max-height: v-bind(maxHeight);
-    overflow-y: hidden;
+    max-height: 50vh;
     width: 100%;
+
+    @include w-max(1600px) {
+      max-height: 50vh;
+    }
 
     &__wrapper {
       display: grid;
       grid-template-columns: v-bind(gridTemplateColumns);
-      overflow: auto;
     }
 
     .cell {
@@ -76,10 +79,10 @@
       padding-bottom: 4px;
       text-align: end;
       font-family: var(--font-inter-medium);
-      font-size: var(--font-size-s);
+      font-size: var(--font-size-xs);
 
       &__header {
-        margin-bottom: 20px;
+        margin-bottom: 10px;
         font-family: var(--font-inter-bold);
         font-size: var(--font-size-xs);
         color: var(--color-gray-main);

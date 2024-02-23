@@ -1,12 +1,31 @@
 <template>
-  <div class="dashboard">
+  <div class="actions">
+    <div class="actions__top">
+      <div class="actions__top__left">
+        <h3>ACTION</h3>
+        <BaseSelect
+          :options="['ALGO', 'TEST1', 'TEST2']"
+          v-model="userSelect"
+        >
+          <div class="select__wrapper">
+            <p>{{ userSelect }}</p>
+            <ArrowDownIcon />
+          </div>
+        </BaseSelect>
+      </div>
+    </div>
     <BaseTable
       :headers="actionsDashboardMockedHeaders"
       :rows="actionsDashboardMockedData"
+      lined
     >
       <template #trigger-row="{ row }">
         <div class="trigger">&lt; {{ row.trigger }}</div>
       </template>
+      <template #price-row="{ row }">
+        <div class="trigger--colorless">{{ row.price }}</div>
+      </template>
+
       <template #side-header="{ column }">
         <div class="side">
           {{ column.label }}
@@ -41,9 +60,46 @@
   import BaseTable from '@common/Table/BaseTable.vue';
   import { actionsDashboardMockedData, actionsDashboardMockedHeaders } from './consts';
   import DeleteIcon from '@icons/General/DeleteIcon.vue';
+  import { ref } from 'vue';
+  import BaseSelect from '../common/Select/BaseSelect.vue';
+  import ArrowDownIcon from '@icons/Header/ArrowDownIcon.vue';
+
+  const userSelect = ref<string>('ALGO');
 </script>
 
 <style scoped lang="scss">
+  .actions {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    padding: var(--space-xs);
+    gap: var(--space-xl);
+    width: 100%;
+    background-color: var(--color-white-main);
+
+    &__top {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+
+      &__left {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: var(--space-m);
+
+        h3 {
+          font-family: var(--font-inter-bold);
+          font-size: var(--font-size-xs);
+          color: var(--color-gray-main);
+        }
+      }
+    }
+  }
   .trigger {
     display: flex;
     align-items: center;
@@ -53,6 +109,17 @@
     color: var(--color-black-main);
     font-family: var(--font-inter-semibold);
     width: fit-content;
+
+    &--colorless {
+      border: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: var(--space-2xs);
+      color: var(--color-black-main);
+      font-family: var(--font-inter-semibold);
+      width: fit-content;
+    }
   }
 
   .side {
@@ -82,6 +149,28 @@
       &:hover {
         cursor: not-allowed;
       }
+    }
+  }
+
+  .select__wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-xs);
+
+    ::v-deep(path) {
+      fill: var(--color-black-main);
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    p {
+      font-family: var(--font-inter-bold);
+      font-size: var(--font-size-xs);
+      color: var(--color-black-main);
     }
   }
 </style>

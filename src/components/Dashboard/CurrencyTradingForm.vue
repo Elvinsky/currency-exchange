@@ -7,8 +7,8 @@
       <BaseSlideSelect
         :options="tokenSlideSelectOptions"
         v-model="tokenChoise"
+        label="CHOOSE TOKEN"
       >
-        <template #label>CHOOSE TOKEN</template>
         <template #BTC-option="{ option }">
           <div class="trading-form__select-choise__item">
             <BTCIcon />
@@ -27,8 +27,8 @@
       <BaseSlideSelect
         :options="orderTypeSlideSelectOptions"
         v-model="orderChoise"
+        label="ORDER TYPE"
       >
-        <template #label>ORDER TYPE</template>
         <template #BTC-option="{ option }">
           <div class="trading-form__select-choise__item">
             <p>{{ option.label }}</p>
@@ -78,13 +78,19 @@
 
 <style scoped lang="scss">
   .trading-form {
-    width: 440px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: start;
     justify-content: center;
-    gap: var(--space-l);
+    gap: var(--space-s);
     padding: var(--space-l);
+    background-color: var(--color-white-main);
+    height: 50vh;
+
+    @include w-max(1600px) {
+      height: 60vh;
+    }
 
     &__select-choise {
       width: 100%;
@@ -104,6 +110,11 @@
       flex-direction: row;
       width: 100%;
       gap: var(--space-s);
+
+      ::v-deep(button) {
+        padding: var(--space-xs);
+        font-size: var(--font-size-xs);
+      }
     }
   }
 </style>

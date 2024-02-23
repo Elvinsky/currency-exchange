@@ -1,14 +1,14 @@
 <template>
   <svg
-    width="25"
+    width="24"
     height="25"
-    viewBox="0 0 25 25"
+    viewBox="0 0 24 25"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
-      d="M0.5 4.5C0.5 2.29086 2.29086 0.5 4.5 0.5H20.5C22.7091 0.5 24.5 2.29086 24.5 4.5V20.5C24.5 22.7091 22.7091 24.5 20.5 24.5H4.5C2.29086 24.5 0.5 22.7091 0.5 20.5V4.5Z"
-      fill="url(#paint0_radial_2318_1523)"
+      d="M0 4.5C0 2.29086 1.79086 0.5 4 0.5H20C22.2091 0.5 24 2.29086 24 4.5V20.5C24 22.7091 22.2091 24.5 20 24.5H4C1.79086 24.5 0 22.7091 0 20.5V4.5Z"
+      fill="url(#paint0_radial_2318_1413)"
       style=""
     />
     <path
@@ -20,12 +20,12 @@
     />
     <defs>
       <radialGradient
-        id="paint0_radial_2318_1523"
+        id="paint0_radial_2318_1413"
         cx="0"
         cy="0"
         r="1"
         gradientUnits="userSpaceOnUse"
-        gradientTransform="translate(0.499999 24.5) rotate(-46.9451) scale(35.1546 247.264)"
+        gradientTransform="translate(-1.09803e-06 24.5) rotate(-46.9451) scale(35.1546 247.264)"
       >
         <stop
           stop-color="#04ADF6"

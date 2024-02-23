@@ -114,7 +114,7 @@
     width: 100% !important;
     height: 100%;
     background: transparent;
-    width: fit-content;
+    height: fit-content;
 
     &__content {
       min-width: 100%;

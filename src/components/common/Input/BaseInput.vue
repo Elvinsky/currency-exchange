@@ -83,6 +83,10 @@
       font-family: var(--font-inter-bold);
       font-size: var(--font-size-xs);
 
+      @include w-max(1600px) {
+        font-size: var(--font-size-2xs);
+      }
+
       &--error {
         color: var(--color-alarm-primary);
       }

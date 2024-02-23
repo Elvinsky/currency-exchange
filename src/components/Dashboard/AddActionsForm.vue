@@ -107,8 +107,11 @@
     flex-direction: column;
     align-items: start;
     justify-content: center;
+    padding: var(--space-l);
     gap: var(--space-xl);
-    width: 1400px;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-white-main);
 
     &__header {
       font-family: var(--font-inter-bold);
