@@ -12,11 +12,8 @@
 
 <style scoped lang="scss">
   .layout {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     padding: var(--space-m);
     background-color: var(--color-white-main);
-    overflow: hidden;
+    height: 50vh;
   }
 </style>

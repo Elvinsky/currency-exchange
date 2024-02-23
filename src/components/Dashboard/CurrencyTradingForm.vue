@@ -78,16 +78,18 @@
 
 <style scoped lang="scss">
   .trading-form {
-    width: 420px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: start;
     justify-content: center;
-    gap: var(--space-l);
+    gap: var(--space-s);
     padding: var(--space-l);
+    background-color: var(--color-white-main);
+    height: 50vh;
 
-    @include w-max($xxxl) {
-      width: 320px;
+    @include w-max(1600px) {
+      height: 60vh;
     }
 
     &__select-choise {
@@ -108,6 +110,11 @@
       flex-direction: row;
       width: 100%;
       gap: var(--space-s);
+
+      ::v-deep(button) {
+        padding: var(--space-xs);
+        font-size: var(--font-size-xs);
+      }
     }
   }
 </style>

@@ -50,13 +50,15 @@
 <style scoped lang="scss">
   .dashboard {
     display: flex;
-    width: 420px;
+    width: 100%;
     flex-direction: column;
     align-items: center;
+    background-color: var(--color-white-main);
+    height: 50vh;
     justify-content: center;
 
-    @include w-max($xxxl) {
-      width: 320px;
+    @include w-max(1600px) {
+      height: 60vh;
     }
   }
 

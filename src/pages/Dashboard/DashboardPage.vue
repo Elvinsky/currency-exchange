@@ -1,104 +1,88 @@
 <template>
-  <div class="wrapper">
-    <div class="dashboard">
-      <div class="dashboard__chart-wrapper">
-        <div class="dashboard__chart-wrapper__settings">
-          <div class="dashboard__chart-wrapper__settings__item">
-            <BaseSlideSelect
-              :options="timeOptions"
-              v-model="timeSelect"
-              backgroundColor="white"
-              class="dashboaed__settings__item--slide"
-            />
-          </div>
-          <div class="dashboard__chart-wrapper__settings__item--text">
-            <p class="dashboard__chart-wrapper__settings__item--text__prefix">24h All</p>
-            <p class="dashboard__chart-wrapper__settings__item--text__content">425,903,214.59</p>
-          </div>
-          <div class="dashboard__chart-wrapper__settings__item--text">
-            <p class="dashboard__chart-wrapper__settings__item--text__prefix">24h All</p>
-            <p class="dashboard__chart-wrapper__settings__item--text__content">425,903,214.59</p>
-          </div>
+  <div class="dashboard">
+    <div class="dashboard__chart">
+      <div class="dashboard__chart__settings-bar">
+        <BaseSlideSelect
+          :options="timeOptions"
+          v-model="timeSelect"
+          class="dashboard__chart__settings-bar__slider"
+          backgroundColor="white"
+        />
+        <div class="dashboard__chart__settings-bar__text-content">
+          <p class="dashboard__chart__settings-bar__text-content__prefix">24h All</p>
+          <p class="dashboard__chart__settings-bar__text-content__content">425,903,214.59</p>
         </div>
-        <div class="dashboard__chart-wrapper__chart"></div>
+        <div class="dashboard__chart__settings-bar__text-content">
+          <p class="dashboard__chart__settings-bar__text-content__prefix">24h All</p>
+          <p class="dashboard__chart__settings-bar__text-content__content">425,903,214.59</p>
+        </div>
       </div>
-      <div class="dashboard__purchase-wrapper">
-        <div class="dashboard__purchase-wrapper__select">
-          <BaseSelect
-            class="dashboard__purchase-wrapper__select--bgwhite"
-            :options="['Bitcoin / Sport Fusion Token']"
-            v-model="purchaseSelect"
+      <div class="dashboard__chart__crypto-widget"><CryptoStocksWidget /></div>
+    </div>
+    <div class="dashboard__currency">
+      <div class="dashboard__currency__settings-bar">
+        <BaseSelect
+          class="dashboard__currency__settings-bar__select"
+          :options="['Bitcoin / Sport Fusion Token']"
+          v-model="purchaseSelect"
+        >
+          <BaseInput
+            readonly
+            :modelValue="purchaseSelect"
           >
-            <BaseInput
-              readonly
-              :modelValue="purchaseSelect"
-            >
-              <template #append-icon>
-                <ArrowDownIcon />
-              </template>
-              <template #prepend-icon>
-                <div class="input__prepend">
-                  <div class="input__prepend__icons">
-                    <BTCIcon />
-                    <SFTIcon />
-                  </div>
-                  BTC/SFT
+            <template #append-icon>
+              <ArrowDownIcon />
+            </template>
+            <template #prepend-icon>
+              <div class="input__prepend">
+                <div class="input__prepend__icons">
+                  <BTCIcon />
+                  <SFTIcon />
                 </div>
-              </template>
-            </BaseInput>
-          </BaseSelect>
-          <div class="dashboard__purchase-wrapper__select__refresh">
-            <RefreshIcon />
-          </div>
+                BTC/SFT
+              </div>
+            </template>
+          </BaseInput>
+        </BaseSelect>
+        <div class="dashboard__currency__settings-bar__refresh">
+          <RefreshIcon />
         </div>
-        <div class="dashboard__purchase-wrapper__forms">
-          <DashboardLayout class="dashboard__purchase-wrapper__forms__item">
-            <CurrencyDashboard />
-          </DashboardLayout>
-          <DashboardLayout class="dashboard__purchase-wrapper__forms__item">
-            <CurrencyTradingForm />
-          </DashboardLayout>
-        </div>
+      </div>
+      <div class="dashboard__currency__forms">
+        <CurrencyDashboard />
+        <CurrencyTradingForm />
       </div>
     </div>
-    <div class="dashboard__lower-section">
-      <div class="actions">
-        <div class="actions__first-row">
-          <DashboardLayout>
+
+    <div class="dashboard__actions">
+      <div class="dashboard__actions__balances">
+        <div class="dashboard__actions__balances__firstline">
+          <div class="dashboard__actions__balances__firstline__actions-dash">
             <ActionDashboard />
-          </DashboardLayout>
-          <DashboardLayout>
-            <BalancesTable />
-          </DashboardLayout>
+          </div>
+          <div class="dashboard__actions__balances__firstline__balance-dash"><BalancesTable /></div>
         </div>
-        <div class="actions__second-row">
-          <DashboardLayout>
-            <AddActionsForm />
-          </DashboardLayout>
-        </div>
+        <AddActionsForm />
       </div>
-      <div class="transactions">
-        <DashboardLayout>
-          <LastTransactionsDashboard />
-        </DashboardLayout>
+      <div class="dashboard__actions__transaction">
+        <LastTransactionsDashboard />
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+  import { timeOptions } from '@pages/Dashboard/consts';
   import type { ISlideSelectModelValue } from '@/components/common/SlideSelect/types';
-  import { ref } from 'vue';
-  import { timeOptions } from './consts';
   import BaseSlideSelect from '@/components/common/SlideSelect/BaseSlideSelect.vue';
   import BaseInput from '@/components/common/Input/BaseInput.vue';
   import ArrowDownIcon from '@/assets/icons/Header/ArrowDownIcon.vue';
-  import BaseSelect from '@/components/common/Select/BaseSelect.vue';
+  import { ref } from 'vue';
   import BTCIcon from '@/assets/icons/General/BTCIcon.vue';
   import SFTIcon from '@/assets/icons/General/SFTIcon.vue';
+  import BaseSelect from '@/components/common/Select/BaseSelect.vue';
   import RefreshIcon from '@icons/General/RefreshIcon.vue';
-
-  import DashboardLayout from '@/components/Dashboard/DashboardLayout.vue';
+  import CryptoStocksWidget from '@/components/Dashboard/CryptoStocksWidget.vue';
   import CurrencyDashboard from '@/components/Dashboard/CurrencyDashboard.vue';
   import CurrencyTradingForm from '@/components/Dashboard/CurrencyTradingForm.vue';
   import ActionDashboard from '@/components/Dashboard/ActionDashboard.vue';
@@ -106,136 +90,109 @@
   import AddActionsForm from '@/components/Dashboard/AddActionsForm.vue';
   import LastTransactionsDashboard from '@/components/Dashboard/LastTransactionsDashboard.vue';
 
-  const timeSelect = ref<ISlideSelectModelValue>(timeOptions[4]);
   const purchaseSelect = ref<string>('Bitcoin / Sport Fusion Token');
+  const timeSelect = ref<ISlideSelectModelValue>(timeOptions[4]);
 </script>
 
 <style scoped lang="scss">
-  .wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    justify-content: start;
-    margin: auto;
-  }
   .dashboard {
+    padding: var(--space-s);
     display: flex;
     flex-direction: row;
-    align-items: start;
     justify-content: start;
+    flex-wrap: wrap;
     gap: 12px;
-    padding: 20px 20px 12px 20px;
 
-    &__chart-wrapper {
+    &__chart {
       display: flex;
       flex-direction: column;
+      gap: 12px;
       align-items: start;
-      justify-content: center;
-      gap: var(--space-s);
-      width: 960px;
+      justify-content: start;
+      width: 50vw;
 
-      @include w-max($xxxl) {
-        width: 760px;
-      }
+      &__settings-bar {
+        display: flex;
+        flex-direction: row;
+        gap: 12px;
+        align-items: center;
+        justify-content: center;
+        width: 50vw;
 
-      &__settings {
-        display: grid;
-        grid-template-columns: 6fr 0.5fr 0.5fr;
-        place-content: center;
-        width: 100%;
-        gap: var(--space-s);
-
-        &__item {
-          width: 100%;
+        &__text-content {
+          height: 100%;
+          width: fit-content;
           display: flex;
           flex-direction: row;
           white-space: nowrap;
-          gap: 30px;
+          gap: 20px;
           align-items: center;
           justify-content: center;
           background-color: var(--color-white-main);
+          padding: 4px 10px;
 
-          &--text {
-            width: 100%;
-            display: flex;
-            flex-direction: row;
-            white-space: nowrap;
-            gap: 20px;
-            align-items: center;
-            justify-content: center;
-            background-color: var(--color-white-main);
-            padding: 4px 10px;
+          &__prefix {
+            font-family: var(--font-inter-semibold);
+            color: var(--color-gray-main);
+            font-size: var(--font-size-m);
 
-            @include w-max($xxxl) {
-              padding: 4px 4px;
+            @include w-max(1600px) {
+              font-size: var(--font-size-xs);
             }
+          }
 
-            &__prefix {
-              font-family: var(--font-inter-semibold);
-              color: var(--color-gray-main);
-              font-size: var(--font-size-m);
+          &__content {
+            font-family: var(--font-inter-semibold);
+            color: var(--color-black-main);
+            font-size: var(--font-size-m);
 
-              @include w-max($xxxl) {
-                font-size: var(--font-size-s);
-              }
-            }
-
-            &__content {
-              font-family: var(--font-inter-semibold);
-              color: var(--color-black-main);
-              font-size: var(--font-size-m);
-
-              @include w-max($xxxl) {
-                font-size: var(--font-size-s);
-              }
+            @include w-max(1600px) {
+              font-size: var(--font-size-xs);
             }
           }
         }
       }
 
-      &__chart {
-        width: 960px;
-        height: 570px;
+      &__crypto-widget {
+        width: 100%;
+        height: 50vh;
         background-color: white;
 
-        @include w-max($xxxl) {
-          width: 760px;
+        @include w-max(1600px) {
+          height: 60vh;
         }
       }
     }
 
-    &__purchase-wrapper {
+    &__currency {
+      width: 47vw;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
       gap: 12px;
+      align-items: start;
+      justify-content: start;
 
-      &__select {
+      &__settings-bar {
         display: flex;
         flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
+        align-items: start;
+        justify-content: start;
         gap: 12px;
-
-        @include w-max($xxxl) {
-          align-items: start;
-          justify-content: start;
-        }
-
-        &--bgwhite {
-          background-color: var(--color-white-main);
-        }
+        width: 100%;
+        height: 44px;
 
         ::v-deep(svg path) {
           fill: var(--color-black-main);
         }
 
+        &__select {
+          background-color: var(--color-white-main);
+        }
+
         &__refresh {
           display: flex;
-          align-items: center;
-          justify-content: center;
+          align-items: start;
+          justify-content: start;
           background-color: var(--color-black-main);
           padding: var(--space-xs);
         }
@@ -246,39 +203,55 @@
         flex-direction: row;
         align-items: start;
         justify-content: space-between;
-        width: 100%;
         gap: 12px;
-
-        &__item {
-          height: 570px;
-        }
+        width: 100%;
       }
     }
 
-    &__lower-section {
-      display: flex;
-      flex-direction: row;
-      gap: 12px;
-    }
-  }
-
-  .actions {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    align-items: start;
-    padding-left: 20px;
-    padding-bottom: 20px;
-    justify-content: start;
-
-    width: 100%;
-
-    &__first-row {
+    &__actions {
       display: flex;
       flex-direction: row;
       align-items: start;
+      flex-wrap: wrap;
       justify-content: start;
       gap: 12px;
+      width: 100%;
+
+      &__balances {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        align-items: start;
+        justify-content: start;
+        width: 70vw;
+
+        &__firstline {
+          display: flex;
+          flex-direction: row;
+          align-items: start;
+          justify-content: start;
+          gap: 12px;
+          width: 100%;
+
+          &__actions-dash {
+            width: 100%;
+            height: 100%;
+          }
+
+          &__balance-dash {
+            height: 100%;
+            width: 100%;
+          }
+        }
+      }
+
+      &__transaction {
+        display: flex;
+        align-items: start;
+        justify-content: start;
+        height: 100%;
+        width: 27vw;
+      }
     }
   }
 

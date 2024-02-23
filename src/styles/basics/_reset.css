@@ -41,3 +41,23 @@ label {
 ul li {
   list-style: none;
 }
+
+/* width */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--color-bg-button-outlined);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--color-gray-light);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

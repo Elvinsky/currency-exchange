@@ -106,11 +106,10 @@
     align-items: start;
     justify-content: center;
     gap: var(--space-xl);
-    width: 648px;
-
-    @include w-max($xxxl) {
-      width: 548px;
-    }
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-white-main);
+    padding: var(--space-l);
 
     &__zero {
       color: var(--color-gray-main);

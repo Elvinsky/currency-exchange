@@ -224,7 +224,7 @@ export const actionsDashboardMockedHeaders: ITableHeaders[] = [
     label: 'AMOUNT',
     align: 'end',
     alignRows: 'end',
-    width: '2fr',
+    width: '1fr',
   },
   {
     id: '4',

@@ -54,6 +54,10 @@
     font-size: var(--font-size-xs);
     width: 100%;
 
+    @include w-max(1600px) {
+      font-size: var(--font-size-2xs);
+    }
+
     .slide-select {
       display: flex;
       flex-direction: row;
@@ -79,6 +83,13 @@
         align-items: center;
         justify-content: center;
         width: 100%;
+
+        @include w-max(1600px) {
+          ::v-deep(svg) {
+            width: 20px;
+            height: 20px;
+          }
+        }
 
         &:hover {
           cursor: pointer;
