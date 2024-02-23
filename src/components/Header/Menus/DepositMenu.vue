@@ -62,7 +62,7 @@
       label="ADRESS"
       @click="copy()"
     >
-      <template #prepend-icon><img src="/public/qr-code 1.png" /> </template>
+      <template #prepend-icon><img src="/qr-code 1.png" /> </template>
       <template #append-icon><CopyIcon /> </template>
     </BaseInput>
     <p class="deposit__postfix">Disclaimer: All deposits in USDC will be converted to SFT</p>

@@ -16,7 +16,7 @@
             :class="{ 'select-list__item--selected': option === modelValue }"
             @click="updateModelValue(option)"
           >
-            <slot :name="`${option.replaceAll(' ', '')}-option`">
+            <slot :name="`${replaceAll(option, ' ', '')}-option`">
               {{ option }}
               <RequiredIcon
                 v-if="option === modelValue"
@@ -46,6 +46,10 @@
 
   const updateModelValue = (item: string) => {
     emit('update:modelValue', item);
+  };
+
+  const replaceAll = (input: string, search: string, replacement: string): string => {
+    return input.split(search).join(replacement);
   };
 </script>
 
