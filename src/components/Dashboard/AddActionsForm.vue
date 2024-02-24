@@ -64,18 +64,21 @@
         <BaseCheckbox
           v-model="isBuyWall"
           class="add-action__options__item"
-          >Buy Wall</BaseCheckbox
         >
+          Buy Wall
+        </BaseCheckbox>
         <BaseCheckbox
           v-model="isSellWall"
           class="add-action__options__item"
-          >Buy Wall</BaseCheckbox
         >
+          Sell Wall
+        </BaseCheckbox>
         <BaseCheckbox
           v-model="isSaveDiff"
           class="add-action__options__item"
-          >Buy Wall</BaseCheckbox
         >
+          Save diff for all pairs
+        </BaseCheckbox>
       </div>
     </div>
   </div>
@@ -156,15 +159,17 @@
         align-items: start;
         justify-content: start;
         gap: var(--space-xl);
+        width: 81%;
 
         &__item {
           font-family: var(--font-inter-medium);
-          font-size: var(--font-size-s);
+          font-size: var(--font-size-xs);
           color: var(--color-gray-main);
+          white-space: nowrap;
         }
 
         &__item:last-child {
-          margin-left: 685px;
+          margin-left: auto;
         }
       }
     }

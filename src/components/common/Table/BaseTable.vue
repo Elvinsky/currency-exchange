@@ -54,6 +54,10 @@
       return `${acc} ${columnWidth}`;
     }, '')
   );
+
+  const maxHeight = computed(() => {
+    return props.maxHeight || '60vh';
+  });
 </script>
 
 <style scoped lang="scss">
@@ -66,7 +70,7 @@
     width: 100%;
 
     @include w-max(1600px) {
-      max-height: 50vh;
+      max-height: v-bind(maxHeight);
     }
 
     &__wrapper {

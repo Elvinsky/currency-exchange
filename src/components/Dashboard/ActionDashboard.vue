@@ -74,7 +74,7 @@
     flex-direction: column;
     align-items: start;
     justify-content: center;
-    padding: var(--space-xs);
+    padding: var(--space-l);
     gap: var(--space-xl);
     width: 100%;
     background-color: var(--color-white-main);

@@ -16,6 +16,7 @@
     <BaseTable
       :rows="transactionsDashboardMockedData"
       :headers="transactionsDashboardMockedHeaders"
+      maxHeight="70vh"
     >
       <template #price-row="{ row }">
         <p
@@ -59,7 +60,7 @@
     display: flex;
     flex-direction: column;
     align-items: start;
-    justify-content: space-around;
+    justify-content: start;
     gap: var(--space-xl);
     width: 100%;
     height: 100%;
