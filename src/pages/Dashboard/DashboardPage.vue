@@ -224,7 +224,8 @@
         gap: 12px;
         align-items: start;
         justify-content: start;
-        width: 70vw;
+        width: 73.6vw;
+        height: 100%;
 
         &__firstline {
           display: flex;
@@ -251,7 +252,7 @@
         align-items: start;
         justify-content: start;
         height: 100%;
-        width: 27vw;
+        width: 23.4vw;
       }
     }
   }

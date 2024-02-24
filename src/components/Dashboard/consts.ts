@@ -196,6 +196,30 @@ export const transactionsDashboardMockedData: IDashboardRows<ITransactionsColumn
     amount: 789012,
     price: 1.001,
   },
+  {
+    id: '16',
+    time: '21:45:55',
+    amount: 789012,
+    price: 1.002,
+  },
+  {
+    id: '17',
+    time: '21:45:55',
+    amount: 789012,
+    price: 1.001,
+  },
+  {
+    id: '18',
+    time: '21:25:55',
+    amount: 79012,
+    price: 1.0009,
+  },
+  {
+    id: '19',
+    time: '21:45:55',
+    amount: 9812,
+    price: 1.009,
+  },
 ];
 
 export const actionsDashboardMockedHeaders: ITableHeaders[] = [

@@ -60,6 +60,11 @@
           </div>
         </div>
       </template>
+      <template #quote-header="{ column }">
+        <div class="quote__column">
+          <p>{{ column.label }}</p>
+        </div>
+      </template>
     </BaseTable>
   </div>
 </template>
@@ -104,7 +109,7 @@
     display: flex;
     flex-direction: column;
     align-items: start;
-    justify-content: center;
+    justify-content: start;
     gap: var(--space-xl);
     width: 100%;
     height: 100%;
@@ -189,6 +194,11 @@
     justify-content: center;
     gap: var(--space-xs);
     padding-top: 6px;
+    padding-left: var(--space-m);
+  }
+
+  .quote__column {
+    padding-left: var(--space-m);
   }
 
   .item__row {

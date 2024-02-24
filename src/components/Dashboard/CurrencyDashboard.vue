@@ -2,6 +2,7 @@
   <div class="dashboard">
     <BaseTable
       :headers="currencyDashboardMcokedHeaders"
+      maxHeight="55vh"
       :rows="currencyDashboardMockedData"
     >
       <template #price-row="{ row }">
