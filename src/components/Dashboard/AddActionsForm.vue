@@ -159,7 +159,7 @@
         align-items: start;
         justify-content: start;
         gap: var(--space-xl);
-        width: 81%;
+        width: 80.3%;
 
         &__item {
           font-family: var(--font-inter-medium);
