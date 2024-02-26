@@ -110,11 +110,11 @@
     display: flex;
     flex-direction: column;
     align-items: start;
-    justify-content: center;
+    justify-content: start;
     padding: var(--space-l);
     gap: var(--space-xl);
     width: 100%;
-    height: 26.4vh;
+    height: 100%;
     background-color: var(--color-white-main);
 
     &__header {
