@@ -116,6 +116,10 @@
     width: 100%;
     background-color: var(--color-white-main);
 
+    @include w-max(1600px) {
+      gap: 34px;
+    }
+
     &__header {
       font-family: var(--font-inter-bold);
       font-size: var(--font-size-xs);
