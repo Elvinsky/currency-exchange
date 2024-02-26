@@ -101,7 +101,6 @@
     display: flex;
     flex-direction: row;
     justify-content: start;
-    align-items: start;
     flex-wrap: wrap;
     gap: 12px;
 
