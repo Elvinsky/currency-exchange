@@ -73,10 +73,12 @@
     display: flex;
     flex-direction: column;
     align-items: start;
-    justify-content: center;
+    justify-content: start;
     padding: var(--space-l);
     gap: var(--space-xl);
     width: 100%;
+    height: 47vh;
+
     background-color: var(--color-white-main);
 
     &__top {

@@ -101,6 +101,7 @@
     display: flex;
     flex-direction: row;
     justify-content: start;
+    align-items: start;
     flex-wrap: wrap;
     gap: 12px;
 
@@ -160,7 +161,7 @@
         background-color: white;
 
         @include w-max(1600px) {
-          height: 60vh;
+          height: 65vh;
         }
       }
     }

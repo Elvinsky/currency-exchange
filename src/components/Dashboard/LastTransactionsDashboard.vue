@@ -63,7 +63,7 @@
     justify-content: start;
     gap: var(--space-xl);
     width: 100%;
-    height: 100%;
+    height: 75vh;
     background-color: var(--color-white-main);
     padding: var(--space-l);
 

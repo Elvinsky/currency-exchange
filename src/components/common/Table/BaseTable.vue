@@ -56,14 +56,13 @@
   );
 
   const maxHeight = computed(() => {
-    return props.maxHeight || '60vh';
+    return props.maxHeight || '70vh';
   });
 </script>
 
 <style scoped lang="scss">
   .table {
-    overflow-x: hidden;
-    overflow-y: scroll;
+    overflow: hidden;
     display: grid;
     grid-template-rows: auto auto;
     max-height: 50vh;

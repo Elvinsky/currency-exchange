@@ -82,14 +82,14 @@
     display: flex;
     flex-direction: column;
     align-items: start;
-    justify-content: center;
+    justify-content: space-between;
     gap: var(--space-s);
     padding: var(--space-l);
     background-color: var(--color-white-main);
     height: 50vh;
 
     @include w-max(1600px) {
-      height: 60vh;
+      height: 65vh;
     }
 
     &__select-choise {

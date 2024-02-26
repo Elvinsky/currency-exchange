@@ -2,7 +2,6 @@
   <div class="dashboard">
     <BaseTable
       :headers="currencyDashboardMcokedHeaders"
-      maxHeight="55vh"
       :rows="currencyDashboardMockedData"
     >
       <template #price-row="{ row }">
@@ -55,11 +54,10 @@
     flex-direction: column;
     align-items: center;
     background-color: var(--color-white-main);
-    height: 50vh;
     justify-content: center;
 
     @include w-max(1600px) {
-      height: 60vh;
+      height: 65vh;
     }
   }
 
