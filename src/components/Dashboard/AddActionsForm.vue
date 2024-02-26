@@ -112,9 +112,8 @@
     align-items: start;
     justify-content: start;
     padding: var(--space-l);
-    gap: var(--space-xl);
+    gap: 30px;
     width: 100%;
-    height: 100%;
     background-color: var(--color-white-main);
 
     &__header {
