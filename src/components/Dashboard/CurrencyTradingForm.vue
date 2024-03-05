@@ -86,7 +86,7 @@
     gap: var(--space-s);
     padding: var(--space-l);
     background-color: var(--color-white-main);
-    height: 60vh;
+    height: 55vh;
 
     @include w-max(1600px) {
       height: 65vh;

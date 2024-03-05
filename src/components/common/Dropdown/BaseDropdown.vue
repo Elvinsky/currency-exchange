@@ -88,16 +88,21 @@
     const elCoords = getElementRect(el, elParent, wWidth, wHeight);
     const parentCoords = (activator.value as HTMLElement).getBoundingClientRect();
 
-    if (parentCoords.x + elCoords.width > wWidth) {
-      left.value = false;
-    } else {
+    if (window.innerWidth <= 500) {
       left.value = true;
-    }
-
-    if (parentCoords.y + elCoords.height > wHeight) {
-      top.value = false;
-    } else {
       top.value = true;
+    } else {
+      if (parentCoords.x + elCoords.width > wWidth) {
+        left.value = false;
+      } else {
+        left.value = true;
+      }
+
+      if (parentCoords.y + elCoords.height > wHeight) {
+        top.value = false;
+      } else {
+        top.value = true;
+      }
     }
   };
 
@@ -115,6 +120,7 @@
     height: 100%;
     background: transparent;
     height: fit-content;
+    z-index: 1;
 
     &__content {
       min-width: 100%;
@@ -125,6 +131,8 @@
     }
 
     &__activator {
+      position: relative;
+      z-index: 0;
       display: flex;
       flex-shrink: 0;
     }

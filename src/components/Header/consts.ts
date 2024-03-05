@@ -9,6 +9,11 @@ import SliderIcon from '@/assets/icons/Header/SliderIcon.vue';
 import TransformIcon from '@/assets/icons/Header/TransformIcon.vue';
 import TrendUpIcon from '@/assets/icons/Header/TrendUpIcon.vue';
 import type { IProfileModel } from './types';
+import HomeIcon from '@/assets/icons/Footer/HomeIcon.vue';
+import MarketsIcon from '@/assets/icons/Footer/MarketsIcon.vue';
+import TradIcon from '@/assets/icons/Footer/TradIcon.vue';
+import ActivesIcon from '@/assets/icons/Footer/ActivesIcon.vue';
+import ProfileIcon from '@/assets/icons/Footer/ProfileIcon.vue';
 
 export const headerNavigationLinks = [
   {
@@ -67,3 +72,31 @@ export const profileMockedData: IProfileModel = {
   name: 'John Doe',
   balance: 593831394.24,
 };
+
+export const footerNavigationLinks = [
+  {
+    component: HomeIcon,
+    route: '/',
+    id: 1,
+  },
+  {
+    component: MarketsIcon,
+    route: '/',
+    id: 2,
+  },
+  {
+    component: TradIcon,
+    route: '/',
+    id: 3,
+  },
+  {
+    component: ActivesIcon,
+    route: '/',
+    id: 4,
+  },
+  {
+    component: ProfileIcon,
+    route: '/',
+    id: 5,
+  },
+];

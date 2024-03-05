@@ -1,10 +1,12 @@
 <template>
   <HeaderComponent />
   <RouterView />
+  <FooterComponent />
 </template>
 
 <script setup lang="ts">
   import HeaderComponent from '@/components/Header/HeaderComponent.vue';
+  import FooterComponent from './components/Header/FooterComponent.vue';
 </script>
 
 <style lang="scss">

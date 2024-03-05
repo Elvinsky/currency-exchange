@@ -61,8 +61,8 @@
     align-items: center;
     padding: var(--space-l);
     background-color: var(--color-white-main);
-    justify-content: center;
-    height: 60vh;
+    justify-content: start;
+    height: 55vh;
 
     @include w-max(1600px) {
       height: 65vh;

@@ -139,11 +139,24 @@
     top: 0;
     left: 0;
 
+    @include w-max($md) {
+      position: fixed;
+      top: 80px;
+      left: 0;
+    }
+
     .header {
       display: grid;
       grid-template-columns: v-bind(gridTemplateColumns);
       grid-auto-rows: auto;
       place-items: center;
+
+      @include w-max($md) {
+        position: fixed;
+        top: 0;
+        left: 0;
+      }
+
       place-content: center;
 
       background-color: var(--color-black-main);
@@ -208,20 +221,7 @@
       }
     }
   }
-  .mobile {
-    @include w-min(361px) {
-      display: none;
-    }
-    @include w-max($md) {
-      display: block;
-    }
-  }
 
-  .pc {
-    @include w-max($md) {
-      display: none;
-    }
-  }
   .page-slider {
     position: relative;
     z-index: 9999;

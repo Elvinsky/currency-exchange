@@ -248,7 +248,7 @@
 
       &__crypto-widget {
         width: 100%;
-        height: 60vh;
+        height: 55vh;
         background-color: white;
 
         @include w-max(1600px) {
@@ -373,8 +373,9 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-bottom: 150px;
     align-items: center;
+    padding-top: 140px;
+    padding-bottom: 140px;
     gap: 12px;
 
     &__widget {
@@ -447,7 +448,7 @@
   }
 
   .dashboard-mobile-alt {
-    padding: var(--space-s);
+    padding: 140px var(--space-s);
     display: flex;
     flex-direction: column;
     justify-content: start;

@@ -1,6 +1,6 @@
 <template>
-  <div class="deposit">
-    <h3 class="deposit__header">Deposit USDC</h3>
+  <div class="deposit--pc">
+    <h3 class="deposit--pc__header">Deposit USDC</h3>
     <BaseSelect
       closeOnClick
       v-model="userChoise"
@@ -9,7 +9,7 @@
       <BaseInput
         readonly
         type="text"
-        class="deposit__input"
+        class="deposit--pc__input"
         :modelValue="userChoise"
         label="SELECT CHAIN"
         backGroundColor="white"
@@ -65,8 +65,9 @@
       <template #prepend-icon><img src="/qr-code 1.png" /> </template>
       <template #append-icon><CopyIcon /> </template>
     </BaseInput>
-    <p class="deposit__postfix">Disclaimer: All deposits in USDC will be converted to SFT</p>
+    <p class="deposit--pc__postfix">Disclaimer: All deposits in USDC will be converted to SFT</p>
   </div>
+  <div class="deposit--mobile"></div>
 </template>
 
 <script setup lang="ts">
@@ -105,7 +106,11 @@
 </script>
 
 <style scoped lang="scss">
-  .deposit {
+  .deposit--pc {
+    @include w-max($md) {
+      display: none;
+    }
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -137,54 +142,62 @@
       font-size: var(--font-size-3xs);
       text-align: center;
     }
-  }
-
-  .select-option {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    padding: var(--space-2xs);
-    width: 100%;
-
-    &__left {
+    .select-option {
       display: flex;
-      flex-direction: column;
-      gap: var(--space-xs);
-      align-items: start;
+      flex-direction: row;
+      align-items: center;
       justify-content: space-between;
-      height: 100%;
-      text-align: start;
-      font-family: var(--font-inter-semibold);
+      padding: var(--space-2xs);
+      width: 100%;
 
-      p:first-child {
-        font-size: var(--font-size-s);
-        color: var(--color-black-main);
-      }
+      &__left {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-xs);
+        align-items: start;
+        justify-content: space-between;
+        height: 100%;
+        text-align: start;
+        font-family: var(--font-inter-semibold);
 
-      p:last-child {
-        font-size: var(--font-size-xs);
-        color: var(--color-gray-main);
-      }
-    }
-
-    &__right {
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-      gap: var(--space-xs);
-      font-family: var(--font-inter-semibold);
-      text-align: start;
-
-      p {
-        font-size: var(--font-size-2xs);
-        color: var(--color-gray-main);
-
-        span {
-          font-size: var(--font-size-xs);
+        p:first-child {
+          font-size: var(--font-size-s);
           color: var(--color-black-main);
         }
+
+        p:last-child {
+          font-size: var(--font-size-xs);
+          color: var(--color-gray-main);
+        }
       }
+
+      &__right {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        gap: var(--space-xs);
+        font-family: var(--font-inter-semibold);
+        text-align: start;
+
+        p {
+          font-size: var(--font-size-2xs);
+          color: var(--color-gray-main);
+
+          span {
+            font-size: var(--font-size-xs);
+            color: var(--color-black-main);
+          }
+        }
+      }
+    }
+  }
+
+  .mobile {
+    @include w-min(361px) {
+      display: none;
+    }
+    @include w-max($md) {
+      display: block;
     }
   }
 </style>
