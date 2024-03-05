@@ -1,7 +1,11 @@
 <template>
   <div class="dashboard-cur">
     <BaseTable
-      :headers="currencyDashboardMcokedHeaders"
+      :headers="
+        totalShown
+          ? currencyDashboardMcokedHeaders
+          : currencyDashboardMcokedHeaders.filter(el => el.id !== '3')
+      "
       :rows="currencyDashboardMockedData"
     >
       <template #price-row="{ row }">
@@ -45,6 +49,8 @@
 <script setup lang="ts">
   import BaseTable from '@common/Table/BaseTable.vue';
   import { currencyDashboardMcokedHeaders, currencyDashboardMockedData } from './consts';
+
+  withDefaults(defineProps<{ totalShown: boolean }>(), { totalShown: true });
 </script>
 
 <style scoped lang="scss">
@@ -53,8 +59,10 @@
     width: 100%;
     flex-direction: column;
     align-items: center;
+    padding: var(--space-l);
     background-color: var(--color-white-main);
     justify-content: center;
+    height: 60vh;
 
     @include w-max(1600px) {
       height: 65vh;
@@ -62,6 +70,7 @@
 
     @include w-max($md) {
       height: 100%;
+      padding: 0;
       width: 80vw;
     }
   }

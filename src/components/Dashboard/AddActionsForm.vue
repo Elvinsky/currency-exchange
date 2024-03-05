@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <h3 class="wrapper__header">ADD ACTION</h3>
-    <div class="add-action">
+    <div class="add-action add-action--pc">
       <form
         class="add-action__form"
         @submit.prevent
@@ -81,6 +81,90 @@
         </BaseCheckbox>
       </div>
     </div>
+    <div class="add-action add-action--mobile">
+      <form
+        class="add-action--mobile__form"
+        @submit.prevent
+      >
+        <div class="add-action--mobile__form__block">
+          <BaseSelect
+            closeOnClick
+            v-model="userInput.module"
+            :options="['ALGO', 'TWAP', 'TEST']"
+          >
+            <BaseInput
+              readonly
+              class="select"
+              label="SELECT MODULE"
+              :modelValue="userInput.module"
+            >
+              <template #append-icon>
+                <div class="append"><ArrowDownIcon /></div>
+              </template>
+            </BaseInput>
+          </BaseSelect>
+          <BaseInput
+            v-model="userInput.buyPercent"
+            label="BUY PERCENT"
+            type="number"
+          >
+            <template #append-icon>
+              <div class="append">%</div>
+            </template>
+          </BaseInput>
+          <BaseInput
+            v-model="userInput.diff"
+            label="DIFF"
+            type="number"
+          >
+            <template #append-icon>
+              <div class="append--colored">0.5</div>
+            </template>
+          </BaseInput>
+        </div>
+        <div class="add-action--mobile__options">
+          <BaseCheckbox
+            v-model="isBuyWall"
+            class="add-action--mobile__options__item"
+          >
+            Buy Wall
+          </BaseCheckbox>
+          <BaseCheckbox
+            v-model="isSellWall"
+            class="add-action--mobile__options__item"
+          >
+            Sell Wall
+          </BaseCheckbox>
+          <BaseCheckbox
+            v-model="isSaveDiff"
+            class="add-action--mobile__options__item"
+          >
+            Save diff
+          </BaseCheckbox>
+        </div>
+        <div class="add-action--mobile__form__block">
+          <BaseInput
+            v-model="userInput.dtmMin"
+            label="DTP MIN"
+            type="number"
+          >
+            <template #append-icon>
+              <div class="append--colored">0.09986</div>
+            </template>
+          </BaseInput>
+          <BaseInput
+            v-model="userInput.dtpMax"
+            label="DTP MAX"
+            type="number"
+          >
+            <template #append-icon>
+              <div class="append--colored">1.0315</div>
+            </template>
+          </BaseInput>
+        </div>
+        <BaseButton variant="primary">Submit</BaseButton>
+      </form>
+    </div>
   </div>
 </template>
 
@@ -131,6 +215,58 @@
       align-items: start;
       justify-content: center;
       gap: var(--space-s);
+
+      &--mobile {
+        @include w-min(361px) {
+          display: none;
+        }
+        @include w-max($md) {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          &__form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: start;
+            justify-content: start;
+            width: 90vw;
+
+            &__block {
+              display: flex;
+              flex-direction: row;
+              gap: 12px;
+            }
+          }
+
+          &__options {
+            display: flex;
+            flex-direction: row;
+            align-items: start;
+            justify-content: start;
+            gap: var(--space-l);
+            width: 95%;
+
+            &__item {
+              font-family: var(--font-inter-medium);
+              font-size: var(--font-size-xs);
+              color: var(--color-gray-main);
+              white-space: nowrap;
+            }
+
+            &__item:last-child {
+              margin-left: auto;
+            }
+          }
+        }
+      }
+
+      &--pc {
+        @include w-max($md) {
+          display: none;
+        }
+      }
 
       &__form {
         display: flex;

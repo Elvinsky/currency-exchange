@@ -16,7 +16,11 @@
       </div>
     </div>
     <BaseTable
-      :headers="actionsDashboardMockedHeaders"
+      :headers="
+        statShown
+          ? actionsDashboardMockedHeaders
+          : actionsDashboardMockedHeaders.filter(el => el.id !== '6' && el.id !== '7')
+      "
       :rows="actionsDashboardMockedData"
       lined
     >
@@ -26,7 +30,12 @@
       <template #price-row="{ row }">
         <div class="trigger--colorless">{{ row.price }}</div>
       </template>
-
+      <template #amount-row="{ row }">
+        <div class="trigger--colorless">{{ row.amount }}</div>
+      </template>
+      <template #exp-row="{ row }">
+        <div class="trigger--colorless">{{ row.exp }}</div>
+      </template>
       <template #side-header="{ column }">
         <div class="side">
           {{ column.label }}
@@ -34,7 +43,7 @@
       </template>
       <template #side-row="{ row }">
         <div
-          class="side"
+          class="side trigger--colorless"
           :class="{
             side__buy: row.side === 'BUY',
             side__sell: row.side === 'SELL',
@@ -66,6 +75,8 @@
   import ArrowDownIcon from '@icons/Header/ArrowDownIcon.vue';
 
   const userSelect = ref<string>('ALGO');
+
+  withDefaults(defineProps<{ statShown: boolean }>(), { statShown: true });
 </script>
 
 <style scoped lang="scss">
@@ -118,6 +129,7 @@
       align-items: center;
       justify-content: center;
       padding-top: var(--space-2xs);
+      padding-right: 5px;
       color: var(--color-black-main);
       font-family: var(--font-inter-semibold);
       width: fit-content;

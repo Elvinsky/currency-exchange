@@ -112,9 +112,12 @@
     justify-content: start;
     gap: var(--space-xl);
     width: 100%;
-    height: 100%;
     background-color: var(--color-white-main);
     padding: var(--space-l);
+
+    @include w-min($lg) {
+      height: 100%;
+    }
 
     &__zero {
       color: var(--color-gray-main);
@@ -126,6 +129,12 @@
       flex-direction: row;
       align-items: center;
       justify-content: space-between;
+
+      @include w-max($md) {
+        align-items: start;
+        flex-direction: column;
+        gap: 10px;
+      }
 
       &__left {
         display: flex;

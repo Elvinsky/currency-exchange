@@ -79,6 +79,11 @@
     min-width: 150px;
     width: 100%;
 
+    @include w-max($md) {
+      min-width: 80px;
+      width: fit-content;
+    }
+
     &__label {
       color: var(--color-gray-main);
       font-family: var(--font-inter-bold);

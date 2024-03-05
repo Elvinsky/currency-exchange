@@ -64,7 +64,7 @@
         <ProfileMenu />
       </div>
     </div>
-    <div class="page-slider">
+    <div class="page-slider mobile">
       <BaseSlideSelect
         itemBackgroundColor="#2E67FF"
         backgroundColor="white"
@@ -87,19 +87,29 @@
   import DepositMenu from './Menus/DepositMenu.vue';
   import WithdrawMenu from './Menus/WithdrawMenu.vue';
   import ProfileMenu from './Menus/ProfileMenu.vue';
-  import { computed, ref } from 'vue';
+  import { computed, ref, watch } from 'vue';
   import type { THeaderOpenedMenu } from './types';
   import { useRoute } from 'vue-router';
   import AdaptiveDepositIcon from '@/assets/icons/Adaptive/AdaptiveDepositIcon.vue';
   import AdaptiveWithdrawIcon from '@/assets/icons/Adaptive/AdaptiveWithdrawIcon.vue';
   import BaseSlideSelect from '../common/SlideSelect/BaseSlideSelect.vue';
   import type { ISlideSelectModelValue } from '../common/SlideSelect/types';
+  import { useMobileSwitchPage } from '@/composables/useMobileSwitchPage';
 
   const route = useRoute();
 
   const openedMenu = ref<THeaderOpenedMenu>('');
 
+  const { setPage } = useMobileSwitchPage();
   const pageSliderModel = ref<ISlideSelectModelValue>({ id: '1', label: 'Charts' });
+
+  watch(
+    pageSliderModel,
+    () => {
+      setPage(pageSliderModel.value);
+    },
+    { deep: true }
+  );
 
   const openMenu = (menu: THeaderOpenedMenu) => {
     if (openedMenu.value == menu) {
@@ -125,6 +135,9 @@
   .wrapper {
     background-color: var(--color-black-main);
     padding: 4px 10px;
+    position: sticky;
+    top: 0;
+    left: 0;
 
     .header {
       display: grid;
@@ -132,9 +145,7 @@
       grid-auto-rows: auto;
       place-items: center;
       place-content: center;
-      position: sticky;
-      top: 0;
-      left: 0;
+
       background-color: var(--color-black-main);
       height: var(--header-height);
       z-index: 9;
@@ -210,5 +221,9 @@
     @include w-max($md) {
       display: none;
     }
+  }
+  .page-slider {
+    position: relative;
+    z-index: 9999;
   }
 </style>

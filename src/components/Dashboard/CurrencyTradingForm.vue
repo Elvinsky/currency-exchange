@@ -86,10 +86,14 @@
     gap: var(--space-s);
     padding: var(--space-l);
     background-color: var(--color-white-main);
-    height: 50vh;
+    height: 60vh;
 
     @include w-max(1600px) {
       height: 65vh;
+    }
+    @include w-max($md) {
+      padding: 0 10px;
+      height: 53vh;
     }
 
     &__select-choise {

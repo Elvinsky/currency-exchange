@@ -73,7 +73,10 @@
       </div>
     </div>
   </div>
-  <div class="dashboard-mobile mobile">
+  <div
+    class="dashboard-mobile mobile"
+    v-if="page.id === '1'"
+  >
     <div class="dashboard-mobile__widget"><CryptoStocksWidget /></div>
     <div class="dashboard-mobile__table">
       <div class="dashboard-mobile__table__header">
@@ -132,6 +135,20 @@
       </div>
     </div>
   </div>
+  <div
+    class="dashboard-mobile-alt"
+    v-if="page.id !== '1'"
+  >
+    <div class="dashboard-mobile-alt__forms">
+      <CurrencyTradingForm />
+      <CurrencyDashboard :totalShown="false" />
+    </div>
+    <div class="dashboard-mobile-alt__tables">
+      <ActionDashboard :statShown="false" />
+      <BalancesTable />
+      <AddActionsForm />
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -152,6 +169,7 @@
   import BalancesTable from '@/components/Dashboard/BalancesTable.vue';
   import AddActionsForm from '@/components/Dashboard/AddActionsForm.vue';
   import LastTransactionsDashboard from '@/components/Dashboard/LastTransactionsDashboard.vue';
+  import { useMobileSwitchPage } from '@/composables/useMobileSwitchPage';
 
   const purchaseSelect = ref<string>('Bitcoin / Sport Fusion Token');
   const timeSelect = ref<ISlideSelectModelValue>(timeOptions[4]);
@@ -159,6 +177,8 @@
   const isPc = computed(() => window.innerWidth >= 500);
 
   const userTableChoise = ref<string>('All');
+
+  const { page } = useMobileSwitchPage();
 
   const tableOption = ref<string>('Order Book');
 
@@ -172,7 +192,7 @@
     padding: var(--space-s);
     display: flex;
     flex-direction: row;
-    justify-content: start;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 12px;
 
@@ -181,8 +201,8 @@
       flex-direction: column;
       gap: 12px;
       align-items: start;
-      justify-content: start;
-      width: 50vw;
+      justify-content: center;
+      width: 49vw;
 
       &__settings-bar {
         display: flex;
@@ -190,7 +210,7 @@
         gap: 12px;
         align-items: center;
         justify-content: center;
-        width: 50vw;
+        width: 49vw;
 
         &__text-content {
           height: 100%;
@@ -228,7 +248,7 @@
 
       &__crypto-widget {
         width: 100%;
-        height: 50vh;
+        height: 60vh;
         background-color: white;
 
         @include w-max(1600px) {
@@ -243,7 +263,7 @@
       flex-direction: column;
       gap: 12px;
       align-items: start;
-      justify-content: start;
+      justify-content: center;
 
       &__settings-bar {
         display: flex;
@@ -286,7 +306,7 @@
       flex-direction: row;
       align-items: start;
       flex-wrap: wrap;
-      justify-content: start;
+      justify-content: center;
       gap: 12px;
       width: 100%;
 
@@ -296,7 +316,7 @@
         gap: 12px;
         align-items: start;
         justify-content: start;
-        width: 73.6vw;
+        width: 72.9vw;
         height: 100%;
 
         &__firstline {
@@ -353,6 +373,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding-bottom: 150px;
     align-items: center;
     gap: 12px;
 
@@ -422,6 +443,34 @@
           }
         }
       }
+    }
+  }
+
+  .dashboard-mobile-alt {
+    padding: var(--space-s);
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    gap: 12px;
+    width: 100%;
+
+    &__forms {
+      display: flex;
+      flex-direction: row;
+      align-items: start;
+      justify-content: start;
+      gap: 12px;
+      width: 90vw;
+    }
+
+    &__tables {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      justify-content: start;
+      gap: 12px;
+      width: 95vw;
     }
   }
 

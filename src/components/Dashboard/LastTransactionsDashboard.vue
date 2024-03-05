@@ -62,9 +62,10 @@
     align-items: start;
     justify-content: start;
     gap: var(--space-xl);
-    width: 100%;
+    width: 99%;
     background-color: var(--color-white-main);
     padding: var(--space-l);
+    height: 100%;
 
     @include w-max($md) {
       width: 80vw;
