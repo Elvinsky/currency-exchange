@@ -8,4 +8,6 @@ export interface ISlideSelectProps {
   options: ISlideSelectModelValue[];
   backgroundColor?: string;
   label?: string;
+  itemBackgroundColor?: string;
+  bordered?: boolean;
 }

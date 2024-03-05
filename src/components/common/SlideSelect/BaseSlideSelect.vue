@@ -31,7 +31,11 @@
 <script setup lang="ts">
   import { computed } from 'vue';
   import type { ISlideSelectModelValue, ISlideSelectProps } from './types';
-  const props = defineProps<ISlideSelectProps>();
+  const props = withDefaults(defineProps<ISlideSelectProps>(), {
+    backgroundColor: 'transparent',
+    itemBackgroundColor: 'black',
+    bordered: true,
+  });
 
   const emits = defineEmits<(e: 'update:modelValue', value: ISlideSelectModelValue) => void>();
 
@@ -39,7 +43,10 @@
     emits('update:modelValue', option);
   };
 
-  const backGroundColorComp = computed(() => props.backgroundColor || 'transparent');
+  const borderComp = computed(() => {
+    if (props.bordered) return '1px solid var(--color-gray-light)';
+    return '0';
+  });
 </script>
 
 <style scoped lang="scss">
@@ -65,10 +72,10 @@
       justify-content: space-between;
       gap: var(--space-2xs);
       padding: var(--space-2xs);
-      border: 1px solid var(--color-gray-light);
+      border: v-bind(borderComp);
       border-radius: 2px;
       width: 100%;
-      background-color: v-bind(backGroundColorComp);
+      background-color: v-bind(backgroundColor);
 
       &__item {
         color: var(--color-gray-main);
@@ -97,7 +104,7 @@
 
         &--active {
           color: var(--color-white-main);
-          background-color: var(--color-black-main);
+          background-color: v-bind(itemBackgroundColor);
         }
       }
     }

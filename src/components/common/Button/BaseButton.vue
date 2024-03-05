@@ -52,6 +52,13 @@
         background-color: var(--color-bg-button-outlined-active);
         border: 2px solid var(--color-bg-button-outlined-active);
       }
+
+      @include w-max($md) {
+        background-color: #252531;
+        border-color: #252531;
+        border: 0;
+        padding: 12px;
+      }
     }
 
     &--primary:not([disabled]) {
