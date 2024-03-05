@@ -1,5 +1,5 @@
 <template>
-  <div class="dashboard">
+  <div class="dashboard-cur">
     <BaseTable
       :headers="currencyDashboardMcokedHeaders"
       :rows="currencyDashboardMockedData"
@@ -48,7 +48,7 @@
 </script>
 
 <style scoped lang="scss">
-  .dashboard {
+  .dashboard-cur {
     display: flex;
     width: 100%;
     flex-direction: column;
@@ -58,6 +58,11 @@
 
     @include w-max(1600px) {
       height: 65vh;
+    }
+
+    @include w-max($md) {
+      height: 100%;
+      width: 80vw;
     }
   }
 

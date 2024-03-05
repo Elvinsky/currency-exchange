@@ -196,20 +196,19 @@
         }
       }
     }
-
-    .mobile {
-      @include w-min(361px) {
-        display: none;
-      }
-      @include w-max($md) {
-        display: block;
-      }
+  }
+  .mobile {
+    @include w-min(361px) {
+      display: none;
     }
+    @include w-max($md) {
+      display: block;
+    }
+  }
 
-    .pc {
-      @include w-max($md) {
-        display: none;
-      }
+  .pc {
+    @include w-max($md) {
+      display: none;
     }
   }
 </style>

@@ -1,5 +1,8 @@
 <template>
-  <div class="dashboard">
+  <div
+    class="dashboard pc"
+    ref="dashboard"
+  >
     <div class="dashboard__chart">
       <div class="dashboard__chart__settings-bar">
         <BaseSlideSelect
@@ -17,7 +20,7 @@
           <p class="dashboard__chart__settings-bar__text-content__content">425,903,214.59</p>
         </div>
       </div>
-      <div class="dashboard__chart__crypto-widget"><CryptoStocksWidget /></div>
+      <div class="dashboard__chart__crypto-widget"><CryptoStocksWidget v-if="isPc" /></div>
     </div>
     <div class="dashboard__currency">
       <div class="dashboard__currency__settings-bar">
@@ -70,6 +73,65 @@
       </div>
     </div>
   </div>
+  <div class="dashboard-mobile mobile">
+    <div class="dashboard-mobile__widget"><CryptoStocksWidget /></div>
+    <div class="dashboard-mobile__table">
+      <div class="dashboard-mobile__table__header">
+        <p
+          :class="{ active: tableOption === 'Order Book' }"
+          @click="changeOption('Order Book')"
+        >
+          Order Book
+        </p>
+        <p
+          :class="{ active: tableOption === 'Last Transactions' }"
+          @click="changeOption('Last Transactions')"
+        >
+          Last Transactions
+        </p>
+        <BaseSelect
+          class="dashboard-mobile__table__header__select"
+          v-model="userTableChoise"
+          :options="['All', 'Largest', 'Smallest']"
+        >
+          <template #default>
+            <div class="dashboard-mobile__table__header__select__container">
+              {{ userTableChoise }}
+              <ArrowDownIcon />
+            </div>
+          </template>
+          <template #All-option>
+            <div
+              class="dashboard-mobile__table__header__select__container__option--underlined"
+              :class="{ active: userTableChoise === 'All' }"
+            >
+              All
+            </div>
+          </template>
+          <template #Largest-option>
+            <div
+              class="dashboard-mobile__table__header__select__container__option--underlined"
+              :class="{ active: userTableChoise === 'Largest' }"
+            >
+              Largest
+            </div>
+          </template>
+          <template #Smallest-option>
+            <div
+              class="dashboard-mobile__table__header__select__container__option"
+              :class="{ active: userTableChoise === 'Smallest' }"
+            >
+              Smallest
+            </div>
+          </template>
+        </BaseSelect>
+      </div>
+      <div class="dashboard-mobile__table__content">
+        <CurrencyDashboard v-if="tableOption === 'Order Book'" />
+        <LastTransactionsDashboard v-if="tableOption === 'Last Transactions'" />
+      </div>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -78,7 +140,7 @@
   import BaseSlideSelect from '@/components/common/SlideSelect/BaseSlideSelect.vue';
   import BaseInput from '@/components/common/Input/BaseInput.vue';
   import ArrowDownIcon from '@/assets/icons/Header/ArrowDownIcon.vue';
-  import { ref } from 'vue';
+  import { computed, ref } from 'vue';
   import BTCIcon from '@/assets/icons/General/BTCIcon.vue';
   import SFTIcon from '@/assets/icons/General/SFTIcon.vue';
   import BaseSelect from '@/components/common/Select/BaseSelect.vue';
@@ -93,6 +155,16 @@
 
   const purchaseSelect = ref<string>('Bitcoin / Sport Fusion Token');
   const timeSelect = ref<ISlideSelectModelValue>(timeOptions[4]);
+
+  const isPc = computed(() => window.innerWidth >= 500);
+
+  const userTableChoise = ref<string>('All');
+
+  const tableOption = ref<string>('Order Book');
+
+  const changeOption = (option: string) => {
+    tableOption.value = option;
+  };
 </script>
 
 <style scoped lang="scss">
@@ -273,6 +345,98 @@
       align-items: center;
       justify-content: center;
       gap: var(--space-2xs);
+    }
+  }
+
+  .dashboard-mobile {
+    padding: var(--space-s);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+
+    &__widget {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+      height: 65vh;
+      width: 100vw;
+    }
+
+    &__table {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: start;
+      padding: var(--space-s);
+      gap: 12px;
+
+      &__header {
+        display: flex;
+        flex-direction: row;
+        align-items: start;
+        justify-content: start;
+        gap: 16px;
+
+        p {
+          font-family: var(--font-inter-bold);
+          color: var(--color-gray-main);
+          font-size: var(--font-size-s);
+          white-space: nowrap;
+          transition: all 0.2s ease;
+
+          &.active {
+            color: var(--color-black-main);
+            text-decoration: underline;
+          }
+        }
+
+        &__select {
+          ::v-deep(path) {
+            fill: black;
+          }
+
+          &__container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+
+            font-family: var(--font-inter-bold);
+            color: var(--color-black-main);
+            font-size: var(--font-size-s);
+            white-space: nowrap;
+
+            &__option {
+              min-width: 100px;
+              padding: var(--sapce-m);
+
+              &--underlined {
+                width: 100%;
+                padding-bottom: 5px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .mobile {
+    @include w-min(361px) {
+      display: none;
+    }
+    @include w-max($md) {
+      display: block;
+    }
+  }
+
+  .pc {
+    @include w-max($md) {
+      display: none;
     }
   }
 </style>

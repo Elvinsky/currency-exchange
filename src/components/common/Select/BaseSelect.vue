@@ -2,6 +2,7 @@
   <BaseDropdown
     v-model="isDropdownOpen"
     class="dropdown_bottom"
+    closeOnClick
   >
     <template #trigger>
       <slot></slot>

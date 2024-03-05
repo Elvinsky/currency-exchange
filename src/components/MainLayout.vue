@@ -13,5 +13,9 @@
     flex-direction: column;
     background-color: var(--color-gray-light);
     height: calc(100vh - var(--header-height));
+
+    @include w-max($md) {
+      background-color: var(--color-white-main);
+    }
   }
 </style>

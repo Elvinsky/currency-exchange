@@ -66,6 +66,10 @@
     background-color: var(--color-white-main);
     padding: var(--space-l);
 
+    @include w-max($md) {
+      width: 80vw;
+    }
+
     &__label {
       display: flex;
       flex-direction: row;
