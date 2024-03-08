@@ -119,6 +119,9 @@
     height: 540px;
     width: 540px;
 
+    position: relative;
+    z-index: 990;
+
     &__header {
       font-size: var(--space-ml);
       font-family: var(--font-inter-semibold);

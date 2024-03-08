@@ -67,6 +67,10 @@
     padding: var(--space-l);
     height: 100%;
 
+    @include w-max($lg) {
+      width: 330px;
+    }
+
     @include w-max($md) {
       width: 80vw;
     }

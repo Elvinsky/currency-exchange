@@ -38,6 +38,7 @@
       width: 100%;
       gap: 16px;
       position: fixed;
+      z-index: 99;
       bottom: 0;
     }
 

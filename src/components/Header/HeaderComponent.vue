@@ -8,7 +8,7 @@
         <BaseDropdown
           v-if="!isAuthPages"
           @clickOutside="openMenu('')"
-          class="header__left__dropdown"
+          class="header__left__dropdown pc"
         >
           <template #trigger>
             <BaseButton
@@ -16,18 +16,24 @@
               :variant="openedMenu === 'deposit' ? 'primary' : 'outlined'"
             >
               <div class="pc">Deposit</div>
-              <div class="mobile"><AdaptiveDepositIcon /></div>
             </BaseButton>
           </template>
           <template #content>
             <DepositMenu />
           </template>
         </BaseDropdown>
+        <BaseButton
+          @click="togglePhoneMenu('deposit')"
+          :variant="openedMenu === 'deposit' ? 'primary' : 'outlined'"
+          class="mobile"
+        >
+          <div class="mobile"><AdaptiveDepositIcon /></div>
+        </BaseButton>
 
         <BaseDropdown
           v-if="!isAuthPages"
           @clickOutside="openMenu('')"
-          class="header__left__dropdown"
+          class="header__left__dropdown pc"
         >
           <template #trigger>
             <BaseButton
@@ -35,20 +41,40 @@
               :variant="openedMenu === 'withdraw' ? 'primary' : 'outlined'"
             >
               <div class="pc">Withdraw</div>
-              <div class="mobile"><AdaptiveWithdrawIcon /></div>
             </BaseButton>
           </template>
           <template #content>
             <WithdrawMenu />
           </template>
         </BaseDropdown>
+        <BaseButton
+          @click="togglePhoneMenu('withdraw')"
+          :variant="openedMenu === 'withdraw' ? 'primary' : 'outlined'"
+          class="mobile"
+        >
+          <div class="mobile"><AdaptiveWithdrawIcon /></div>
+        </BaseButton>
       </div>
       <div
-        v-if="!isAuthPages"
+        v-if="!isAuthPages && !isTablet"
         class="header__center"
       >
         <RouterLink
           v-for="link in headerNavigationLinks"
+          :key="link.id"
+          class="header__center__link"
+          exactActiveClass="header__center__link--active"
+          :to="link.route"
+        >
+          <component :is="link.component"></component>
+        </RouterLink>
+      </div>
+      <div
+        v-if="!isAuthPages && isTablet"
+        class="header__center"
+      >
+        <RouterLink
+          v-for="link in headerTabletNavigationLinks"
           :key="link.id"
           class="header__center__link"
           exactActiveClass="header__center__link--active"
@@ -66,6 +92,7 @@
     </div>
     <div class="page-slider mobile">
       <BaseSlideSelect
+        v-if="!isAuthPages"
         itemBackgroundColor="#2E67FF"
         backgroundColor="white"
         :bordered="false"
@@ -77,10 +104,37 @@
       />
     </div>
   </div>
+
+  <div
+    class="phone-menu-deposit"
+    v-if="openedPhoneMenu === 'deposit'"
+  >
+    <BackIcon @click="togglePhoneMenu('')" />
+    <div
+      class="phone-menu-deposit__next"
+      @click="togglePhoneMenu('withdraw')"
+    >
+      <p>Withdraw</p>
+      <NextIcon />
+    </div>
+  </div>
+  <div
+    class="phone-menu-withdraw"
+    v-if="openedPhoneMenu === 'withdraw'"
+  >
+    <BackIcon @click="togglePhoneMenu('')" />
+    <div
+      class="phone-menu-withdraw__next"
+      @click="togglePhoneMenu('deposit')"
+    >
+      <p>Deposit</p>
+      <NextIcon />
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
-  import { headerNavigationLinks } from './consts';
+  import { headerNavigationLinks, headerTabletNavigationLinks } from './consts';
   import MainLogoIcon from '@/assets/icons/Logo/MainLogoIcon.vue';
   import BaseButton from '../common/Button/BaseButton.vue';
   import BaseDropdown from '../common/Dropdown/BaseDropdown.vue';
@@ -95,13 +149,27 @@
   import BaseSlideSelect from '../common/SlideSelect/BaseSlideSelect.vue';
   import type { ISlideSelectModelValue } from '../common/SlideSelect/types';
   import { useMobileSwitchPage } from '@/composables/useMobileSwitchPage';
+  import BackIcon from '@/assets/icons/Adaptive/BackIcon.vue';
+  import NextIcon from '@/assets/icons/Adaptive/NextIcon.vue';
 
   const route = useRoute();
 
   const openedMenu = ref<THeaderOpenedMenu>('');
 
+  const openedPhoneMenu = ref<string>('');
+
   const { setPage } = useMobileSwitchPage();
   const pageSliderModel = ref<ISlideSelectModelValue>({ id: '1', label: 'Charts' });
+
+  const togglePhoneMenu = (menu: string) => {
+    openedPhoneMenu.value = menu;
+
+    if (openedMenu.value) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+  };
 
   watch(
     pageSliderModel,
@@ -129,6 +197,8 @@
     }
     return '1fr 5fr 1fr';
   });
+
+  const isTablet = computed(() => window.innerWidth <= 1100);
 </script>
 
 <style scoped lang="scss">
@@ -137,12 +207,14 @@
     padding: 4px 10px;
     position: sticky;
     top: 0;
+    z-index: 99;
     left: 0;
 
     @include w-max($md) {
       position: fixed;
       top: 80px;
       left: 0;
+      z-index: 99;
     }
 
     .header {
@@ -224,6 +296,45 @@
 
   .page-slider {
     position: relative;
-    z-index: 9999;
+    z-index: 10;
+  }
+
+  .tablet {
+    @include w-min($md) {
+      display: none;
+    }
+    @include w-max($lg) {
+      display: block;
+    }
+  }
+
+  .phone-menu-deposit {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 99999;
+    background-color: white;
+
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+  }
+
+  .phone-menu-withdraw {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 99999;
+    background-color: white;
+
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
   }
 </style>

@@ -20,7 +20,9 @@
           <p class="dashboard__chart__settings-bar__text-content__content">425,903,214.59</p>
         </div>
       </div>
-      <div class="dashboard__chart__crypto-widget"><CryptoStocksWidget v-if="isPc" /></div>
+      <div class="dashboard__chart__crypto-widget">
+        <CryptoStocksWidget v-if="getDeviceType === 'pc'" />
+      </div>
     </div>
     <div class="dashboard__currency">
       <div class="dashboard__currency__settings-bar">
@@ -77,7 +79,9 @@
     class="dashboard-mobile mobile"
     v-if="page.id === '1'"
   >
-    <div class="dashboard-mobile__widget"><CryptoStocksWidget /></div>
+    <div class="dashboard-mobile__widget">
+      <CryptoStocksWidget v-if="getDeviceType === 'tablet'" />
+    </div>
     <div class="dashboard-mobile__table">
       <div class="dashboard-mobile__table__header">
         <p
@@ -149,6 +153,74 @@
       <AddActionsForm />
     </div>
   </div>
+  <div class="dashboard-tablet tablet">
+    <div class="dashboard-tablet__settings">
+      <BaseSlideSelect
+        :options="timeOptions"
+        v-model="timeSelect"
+        class="dashboard-tablet__settings__slider"
+        backgroundColor="white"
+      />
+      <div class="dashboard-tablet__settings__text-content">
+        <p class="dashboard-tablet__settings__text-content__prefix">24h All</p>
+        <p class="dashboard-tablet__settings__text-content__content">425,903,214.59</p>
+      </div>
+      <div class="dashboard-tablet__settings__text-content">
+        <p class="dashboard-tablet__settings__text-content__prefix">24h All</p>
+        <p class="dashboard-tablet__settings__text-content__content">425,903,214.59</p>
+      </div>
+    </div>
+    <div class="dashboard-tablet__currency-choise">
+      <BaseSelect
+        closeOnClick
+        class="dashboard-tablet__currency-choise__select"
+        :options="['Bitcoin / Sport Fusion Token']"
+        v-model="purchaseSelect"
+      >
+        <BaseInput
+          readonly
+          :modelValue="purchaseSelect"
+        >
+          <template #append-icon>
+            <ArrowDownIcon />
+          </template>
+          <template #prepend-icon>
+            <div class="input__prepend">
+              <div class="input__prepend__icons">
+                <BTCIcon />
+                <SFTIcon />
+              </div>
+              BTC/SFT
+            </div>
+          </template>
+        </BaseInput>
+      </BaseSelect>
+      <div class="dashboard__currency__settings-bar__refresh">
+        <RefreshIcon />
+      </div>
+    </div>
+    <div class="dashboard-tablet__currency">
+      <div class="dashboard-tablet__currency__widget">
+        <CryptoStocksWidget v-if="getDeviceType === 'tablet'" />
+      </div>
+      <div class="dashboard-tablet__currency__form">
+        <CurrencyDashboard />
+      </div>
+    </div>
+    <div class="dashboard-tablet__currency__trade">
+      <CurrencyTradingForm />
+    </div>
+    <div class="dashboard-tablet__actions">
+      <div class="dashboard-tablet__actions__dashboard">
+        <ActionDashboard />
+        <BalancesTable />
+      </div>
+      <div class="dashboard-tablet__actions__transactions">
+        <LastTransactionsDashboard />
+      </div>
+    </div>
+    <AddActionsForm />
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -174,8 +246,6 @@
   const purchaseSelect = ref<string>('Bitcoin / Sport Fusion Token');
   const timeSelect = ref<ISlideSelectModelValue>(timeOptions[4]);
 
-  const isPc = computed(() => window.innerWidth >= 500);
-
   const userTableChoise = ref<string>('All');
 
   const { page } = useMobileSwitchPage();
@@ -185,6 +255,18 @@
   const changeOption = (option: string) => {
     tableOption.value = option;
   };
+
+  const getDeviceType = computed(() => {
+    const innerWidth = window.innerWidth;
+
+    if (innerWidth < 500) {
+      return 'mobile';
+    } else if (innerWidth > 500 && innerWidth < 1100) {
+      return 'tablet';
+    } else {
+      return 'pc';
+    }
+  });
 </script>
 
 <style scoped lang="scss">
@@ -195,6 +277,10 @@
     justify-content: center;
     flex-wrap: wrap;
     gap: 12px;
+
+    @include w-max(500px) {
+      display: none;
+    }
 
     &__chart {
       display: flex;
@@ -378,6 +464,9 @@
     padding-bottom: 140px;
     gap: 12px;
 
+    position: relative;
+    z-index: 2;
+
     &__widget {
       display: flex;
       align-items: center;
@@ -456,6 +545,9 @@
     gap: 12px;
     width: 100%;
 
+    position: relative;
+    z-index: 2;
+
     &__forms {
       display: flex;
       flex-direction: row;
@@ -475,6 +567,116 @@
     }
   }
 
+  .dashboard-tablet {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    gap: 12px;
+
+    @include w-max($lg) {
+      display: flex;
+    }
+
+    @include w-min(300px) {
+      display: none;
+    }
+
+    &__settings {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      width: 100%;
+
+      &__text-content {
+        height: 42px;
+        width: fit-content;
+        display: flex;
+        flex-direction: row;
+        white-space: nowrap;
+        gap: 20px;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--color-white-main);
+        padding: 4px 10px;
+
+        &__prefix {
+          font-family: var(--font-inter-semibold);
+          color: var(--color-gray-main);
+          font-size: var(--font-size-m);
+        }
+
+        &__content {
+          font-family: var(--font-inter-semibold);
+          color: var(--color-black-main);
+          font-size: var(--font-size-m);
+        }
+      }
+    }
+
+    &__currency-choise {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      gap: 12px;
+
+      ::v-deep(svg path) {
+        fill: var(--color-black-main);
+      }
+
+      &__select {
+        background-color: var(--color-white-main);
+      }
+
+      &__refresh {
+        display: flex;
+        align-items: start;
+        justify-content: start;
+        background-color: var(--color-black-main);
+        padding: var(--space-xs);
+      }
+    }
+
+    &__currency {
+      display: flex;
+      flex-direction: row;
+      align-items: start;
+      justify-content: start;
+      width: 100%;
+      gap: 12px;
+
+      &__widget {
+        border: 1px solid black;
+        width: 100%;
+        height: 55vh;
+      }
+
+      &__form {
+        width: 100%;
+        max-width: 350px;
+      }
+    }
+
+    &__actions {
+      display: flex;
+      flex-direction: row;
+      gap: 12px;
+      width: 100%;
+
+      &__dashboard {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+    }
+  }
+
   .mobile {
     @include w-min(361px) {
       display: none;
@@ -485,8 +687,11 @@
   }
 
   .pc {
-    @include w-max($md) {
+    @include w-max($lg) {
       display: none;
     }
+  }
+
+  .tablet {
   }
 </style>

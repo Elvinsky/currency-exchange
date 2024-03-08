@@ -14,6 +14,7 @@ import MarketsIcon from '@/assets/icons/Footer/MarketsIcon.vue';
 import TradIcon from '@/assets/icons/Footer/TradIcon.vue';
 import ActivesIcon from '@/assets/icons/Footer/ActivesIcon.vue';
 import ProfileIcon from '@/assets/icons/Footer/ProfileIcon.vue';
+import MoreIcon from '@/assets/icons/Adaptive/MoreIcon.vue';
 
 export const headerNavigationLinks = [
   {
@@ -65,6 +66,35 @@ export const headerNavigationLinks = [
     component: DollarCircleIcon,
     route: '/',
     id: 10,
+  },
+];
+
+export const headerTabletNavigationLinks = [
+  {
+    component: ColumnChartIcon,
+    route: '/login',
+    id: 1,
+  },
+  {
+    component: PieChartIcon,
+    route: '/',
+    id: 2,
+  },
+  {
+    component: GearIcon,
+    route: '/',
+    id: 3,
+  },
+
+  {
+    component: SliderIcon,
+    route: '/',
+    id: 6,
+  },
+  {
+    component: MoreIcon,
+    route: '/',
+    id: 7,
   },
 ];
 

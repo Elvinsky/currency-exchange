@@ -73,6 +73,9 @@
       padding: 0;
       width: 80vw;
     }
+    @include w-max($lg) {
+      height: 55vh;
+    }
   }
 
   .bordered {

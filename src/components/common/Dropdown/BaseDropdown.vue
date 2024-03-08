@@ -126,7 +126,7 @@
       min-width: 100%;
       width: fit-content;
       position: absolute;
-      z-index: 999999;
+      z-index: 999;
       overflow: hidden;
     }
 

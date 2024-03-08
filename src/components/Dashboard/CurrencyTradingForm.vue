@@ -91,11 +91,27 @@
     @include w-max(1600px) {
       height: 65vh;
     }
+
     @include w-max($md) {
       padding: 0 10px;
       height: 53vh;
     }
+    @include w-max($lg) {
+      flex-direction: row;
+      flex-wrap: wrap;
+      height: fit-content;
+      align-items: center;
+      justify-content: center;
 
+      div {
+        max-width: 300px;
+      }
+
+      .trading-form__actions {
+        padding-top: 20px;
+        height: 100%;
+      }
+    }
     &__select-choise {
       width: 100%;
 

@@ -204,6 +204,10 @@
       gap: 34px;
     }
 
+    @include w-max($lg) {
+      width: 100%;
+    }
+
     &__header {
       font-family: var(--font-inter-bold);
       font-size: var(--font-size-xs);
@@ -299,6 +303,10 @@
         justify-content: start;
         gap: var(--space-xl);
         width: 80.3%;
+
+        @include w-max($lg) {
+          width: 86.9%;
+        }
 
         &__item {
           font-family: var(--font-inter-medium);
