@@ -1,5 +1,8 @@
 <template>
-  <div class="table">
+  <div
+    class="table"
+    ref="table"
+  >
     <div class="table__wrapper">
       <div
         v-for="header in headers"
@@ -20,22 +23,37 @@
           :key="rowIdx"
         >
           <div
-            v-for="header in headers"
+            v-for="(header, headerIdx) in headers"
             class="cell"
-            :class="{
-              'cell__lined cell__lined--underlined': rows[rowIdx + 1] && lined,
-              cell__lined: !rows[rowIdx + 1] && lined,
-            }"
+            :class="[
+              `cell--${rowIdx}`,
+              {
+                'cell__lined cell__lined--underlined': rows[rowIdx + 1] && lined,
+                cell__lined: !rows[rowIdx + 1] && lined,
+              },
+            ]"
+            @click="test(`cell--${rowIdx}`, `delete--${rowIdx}`)"
             :key="header.id"
-            :style="{ textAlign: header.alignRows ? header.alignRows : 'end' }"
+            :style="{
+              textAlign: header.alignRows ? header.alignRows : 'end',
+              whiteSpace: deletable ? 'nowrap' : '',
+            }"
           >
             <slot
               :name="`${header.field}-row`"
               :row="row"
+              :idx="rowIdx"
               :header="header"
             >
               {{ row[header.field] }}
             </slot>
+            <div
+              class="delete-pop-up"
+              :class="`delete-${rowIdx}`"
+              v-if="deletable && headerIdx === headers.length - 1"
+            >
+              <CrossIcon />
+            </div>
           </div>
         </template>
       </template>
@@ -44,20 +62,68 @@
 </template>
 
 <script setup lang="ts">
-  import { computed } from 'vue';
+  import { computed, ref } from 'vue';
   import type { ITableProps } from './types';
+  import CrossIcon from '@/assets/icons/General/CrossIcon.vue';
   const props = defineProps<ITableProps>();
 
-  const gridTemplateColumns = computed(() =>
-    props.headers.reduce((acc, column) => {
+  const gridTemplateColumns = computed(() => {
+    let templateColumns = props.headers.reduce((acc, column) => {
       const columnWidth = column.width || '1fr';
       return `${acc} ${columnWidth}`;
-    }, '')
-  );
+    }, '');
+
+    return templateColumns;
+  });
 
   const maxHeight = computed(() => {
     return props.maxHeight || '70vh';
   });
+
+  const table = ref();
+
+  const activeElement = ref();
+  const activeDelete = ref();
+
+  const displayComp1 = computed(() => (activeDelete.value === 'delete--0' ? 'flex' : 'none'));
+  const displayComp2 = computed(() => (activeDelete.value === 'delete--1' ? 'flex' : 'none'));
+  const displayComp3 = computed(() => (activeDelete.value === 'delete--2' ? 'flex' : 'none'));
+  const displayComp4 = computed(() => (activeDelete.value === 'delete--3' ? 'flex' : 'none'));
+  const displayComp5 = computed(() => (activeDelete.value === 'delete--4' ? 'flex' : 'none'));
+
+  const test = (rowClass: string, deleteClass: string) => {
+    if (!table.value || window.innerWidth >= 500) return;
+
+    // Reset styles for previously active elements
+    resetStyles(activeElement.value, 'transform', 'translateX(0px)');
+    resetStyles(activeDelete.value, 'display', 'none');
+
+    // Set new active classes
+    activeElement.value = rowClass;
+    activeDelete.value = deleteClass;
+
+    // Apply styles to the clicked row
+    setStyles(rowClass, 'transform', 'translateX(-40px)');
+
+    // Display the delete button in the clicked row
+    setStyles(deleteClass, 'display', 'flex');
+  };
+
+  const resetStyles = (className: string | undefined, styleProperty: string, value: string) => {
+    if (className) {
+      const elements: HTMLElement[] = table.value.getElementsByClassName(className);
+      for (let item of elements) {
+        item.style[styleProperty] = value;
+      }
+    }
+  };
+
+  const setStyles = (className: string, styleProperty: string, value: string) => {
+    const elements: HTMLElement[] = table.value.getElementsByClassName(className);
+    for (let item of elements) {
+      item.style[styleProperty] = value;
+    }
+  };
 </script>
 
 <style scoped lang="scss">
@@ -83,6 +149,8 @@
       text-align: end;
       font-family: var(--font-inter-medium);
       font-size: var(--font-size-xs);
+      display: flex;
+      align-items: center;
 
       &__header {
         margin-bottom: 10px;
@@ -100,5 +168,29 @@
         }
       }
     }
+  }
+  [class^='delete-'] {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-gray-main);
+    padding: 10px 20px;
+    margin-left: 10px;
+  }
+
+  .delete-0 {
+    display: v-bind(displayComp1);
+  }
+  .delete-1 {
+    display: v-bind(displayComp2);
+  }
+  .delete-2 {
+    display: v-bind(displayComp3);
+  }
+  .delete-3 {
+    display: v-bind(displayComp4);
+  }
+  .delete-4 {
+    display: v-bind(displayComp5);
   }
 </style>

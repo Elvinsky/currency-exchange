@@ -26,8 +26,10 @@
       <BaseButton
         @click="submit"
         variant="primary"
-        >Start KYC</BaseButton
+        class="button"
       >
+        Start KYC
+      </BaseButton>
     </div>
   </div>
 </template>
@@ -52,6 +54,11 @@
     background-color: var(--color-gray-light);
     height: calc(100vh - var(--header-height));
 
+    @include w-max($sm) {
+      background-color: white;
+      height: 100vh;
+    }
+
     &__content {
       display: flex;
       flex-direction: column;
@@ -73,6 +80,11 @@
         font-family: var(--font-inter-medium);
         font-size: var(--font-size-m);
         color: var(--color-black-main);
+
+        @include w-max($sm) {
+          font-size: 16px;
+          max-width: 350px;
+        }
       }
 
       &__or {
@@ -100,6 +112,10 @@
           font-family: var(--font-inter-medium);
           font-size: var(--font-size-m);
           color: var(--color-black-main);
+
+          @include w-max($sm) {
+            font-family: var(--font-inter-semibold);
+          }
         }
       }
 
@@ -108,12 +124,32 @@
         font-size: var(--font-size-s);
         color: var(--color-gray-main);
 
+        @include w-max($sm) {
+          width: 70%;
+        }
+
         &--link {
           text-decoration: underline;
           text-underline-offset: 2px;
         }
       }
+
+      @include w-max($sm) {
+        display: flex;
+        font-family: var(--font-inter-regular);
+        padding: 16px;
+        font-size: var(--font-size-s);
+        width: 100%;
+      }
+    }
+  }
+
+  .button {
+    @include w-max($sm) {
+      position: fixed;
+      width: calc(100vw - 32px);
+      left: 16px;
+      bottom: 70px;
     }
   }
 </style>
-@/pages/router

@@ -1,7 +1,7 @@
 <template>
   <button
     class="button"
-    :class="`button--${variant}`"
+    :class="[`button--${variant}`, { 'button--hidden': hidden }]"
     :disabled="disabled"
   >
     <slot></slot>
@@ -14,6 +14,7 @@
   withDefaults(defineProps<IButtonProps>(), {
     disabled: false,
     variant: 'outlined',
+    hidden: false,
   });
 </script>
 
@@ -27,6 +28,10 @@
     transition: var(--transition-default);
     font-family: var(--font-inter-semibold);
     font-size: var(--font-size-s);
+
+    &--hidden {
+      display: none;
+    }
 
     &[disabled] {
       background-color: var(--color-gray-main);
@@ -74,6 +79,23 @@
       &:active {
         background-color: var(--color-bg-button-primary-active);
         border: 2px solid var(--color-bg-button-primary-active);
+      }
+    }
+
+    &--white:not([disabled]) {
+      background-color: var(--color-white-main);
+      border: 2px solid var(--color-white-main);
+      color: var(--color-black-main);
+      font-size: 16px;
+
+      &:hover {
+        background-color: rgb(220, 220, 220);
+        border: 2px solid rgb(220, 220, 220);
+      }
+
+      &:active {
+        background-color: rgb(205, 205, 205);
+        border: 2px solid rgb(205, 205, 205);
       }
     }
 

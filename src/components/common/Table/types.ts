@@ -17,4 +17,5 @@ export interface ITableProps {
   headers: ITableHeaders[];
   maxHeight?: string;
   lined?: boolean;
+  deletable?: boolean;
 }

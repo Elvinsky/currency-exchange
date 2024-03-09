@@ -1,5 +1,8 @@
 <template>
-  <div class="footer">
+  <div
+    class="footer"
+    v-if="!isAuthPages"
+  >
     <div class="footer__buttons">
       <BaseButton variant="primary">Buy</BaseButton>
       <BaseButton variant="secondary">Sell</BaseButton>
@@ -19,10 +22,15 @@
 </template>
 
 <script setup lang="ts">
+  import { computed } from 'vue';
   import BaseButton from '../common/Button/BaseButton.vue';
   import { footerNavigationLinks } from './consts';
+  import { useRoute } from 'vue-router';
+  const route = useRoute();
 
-  // Your script code here
+  const isAuthPages = computed(
+    () => route.name === 'Registration' || route.name === 'Verification' || route.name === 'Login'
+  );
 </script>
 
 <style scoped lang="scss">

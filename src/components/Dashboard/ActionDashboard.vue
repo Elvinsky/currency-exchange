@@ -23,15 +23,21 @@
       "
       :rows="actionsDashboardMockedData"
       lined
+      deletable
     >
       <template #trigger-row="{ row }">
-        <div class="trigger">&lt; {{ row.trigger }}</div>
+        <div class="trigger cell">&lt; {{ row.trigger }}</div>
       </template>
       <template #price-row="{ row }">
         <div class="trigger--colorless">{{ row.price }}</div>
       </template>
       <template #amount-row="{ row }">
-        <div class="trigger--colorless">{{ row.amount }}</div>
+        <div
+          class="trigger--colorless"
+          style="margin-left: 10px"
+        >
+          {{ row.amount }}
+        </div>
       </template>
       <template #exp-row="{ row }">
         <div class="trigger--colorless">{{ row.exp }}</div>
@@ -41,6 +47,7 @@
           {{ column.label }}
         </div>
       </template>
+
       <template #side-row="{ row }">
         <div
           class="side trigger--colorless"
@@ -129,7 +136,6 @@
       align-items: center;
       justify-content: center;
       padding-top: var(--space-2xs);
-      padding-right: 5px;
       color: var(--color-black-main);
       font-family: var(--font-inter-semibold);
       width: fit-content;

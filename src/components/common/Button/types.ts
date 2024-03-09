@@ -1,6 +1,7 @@
-export type TButtonVariants = 'outlined' | 'primary' | 'secondary';
+export type TButtonVariants = 'outlined' | 'primary' | 'secondary' | 'white';
 
 export interface IButtonProps {
   disabled?: boolean;
   variant?: TButtonVariants;
+  hidden?: boolean;
 }

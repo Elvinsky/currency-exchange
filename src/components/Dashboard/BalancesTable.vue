@@ -130,7 +130,7 @@
       align-items: center;
       justify-content: space-between;
 
-      @include w-max($md) {
+      @include w-max($lg) {
         align-items: start;
         flex-direction: column;
         gap: 10px;
