@@ -109,7 +109,8 @@
     if (className) {
       const elements: HTMLElement[] = table.value.getElementsByClassName(className);
       for (let item of elements) {
-        item.style[styleProperty] = value;
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        item.style[styleProperty as any] = value;
       }
     }
   };
@@ -117,7 +118,8 @@
   const setStyles = (className: string, styleProperty: string, value: string) => {
     const elements: HTMLElement[] = table.value.getElementsByClassName(className);
     for (let item of elements) {
-      item.style[styleProperty] = value;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      item.style[styleProperty as any] = value;
     }
   };
 
