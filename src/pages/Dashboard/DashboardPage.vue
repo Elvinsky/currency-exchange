@@ -551,7 +551,7 @@
     display: flex;
     flex-direction: column;
     justify-content: start;
-    align-items: start;
+    align-items: center;
     gap: 12px;
     width: 100%;
 
