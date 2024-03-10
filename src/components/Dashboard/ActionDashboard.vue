@@ -98,6 +98,10 @@
 
     background-color: var(--color-white-main);
 
+    :v-deep(.cell) {
+      display: flex;
+    }
+
     &__top {
       width: 100%;
       display: flex;

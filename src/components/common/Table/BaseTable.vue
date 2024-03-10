@@ -65,7 +65,7 @@
   import { computed, ref } from 'vue';
   import type { ITableProps } from './types';
   import CrossIcon from '@/assets/icons/General/CrossIcon.vue';
-  const props = defineProps<ITableProps>();
+  const props = withDefaults(defineProps<ITableProps>(), { deletable: false });
 
   const gridTemplateColumns = computed(() => {
     let templateColumns = props.headers.reduce((acc, column) => {
@@ -92,20 +92,16 @@
   const displayComp5 = computed(() => (activeDelete.value === 'delete--4' ? 'flex' : 'none'));
 
   const test = (rowClass: string, deleteClass: string) => {
-    if (!table.value || window.innerWidth >= 500) return;
+    if (!table.value || window.innerWidth >= 600 || !props.deletable) return;
 
-    // Reset styles for previously active elements
     resetStyles(activeElement.value, 'transform', 'translateX(0px)');
     resetStyles(activeDelete.value, 'display', 'none');
 
-    // Set new active classes
     activeElement.value = rowClass;
     activeDelete.value = deleteClass;
 
-    // Apply styles to the clicked row
     setStyles(rowClass, 'transform', 'translateX(-40px)');
 
-    // Display the delete button in the clicked row
     setStyles(deleteClass, 'display', 'flex');
   };
 
@@ -124,6 +120,10 @@
       item.style[styleProperty] = value;
     }
   };
+
+  const displayComp = computed(() => {
+    return props.deletable ? 'flex' : '';
+  });
 </script>
 
 <style scoped lang="scss">
@@ -144,13 +144,12 @@
     }
 
     .cell {
+      display: v-bind(displayComp);
       padding-top: 4px;
       padding-bottom: 4px;
       text-align: end;
       font-family: var(--font-inter-medium);
       font-size: var(--font-size-xs);
-      display: flex;
-      align-items: center;
 
       &__header {
         margin-bottom: 10px;

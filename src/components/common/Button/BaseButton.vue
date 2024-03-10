@@ -101,14 +101,17 @@
 
     &--secondary:not([disabled]) {
       background-color: var(--color-alarm-primary);
+      border: 2px solid var(--color-alarm-primary);
       color: var(--color-white-main);
 
       &:hover {
-        background-color: var(--color-alarm-secondary);
+        border: 2px solid var(--color-bg-button-primary-active);
+        background-color: var(--color-bg-button-primary-active);
       }
 
       &:active {
         background-color: var(--color-alarm-third);
+        border: 2px solid var(--color-alarm-third);
       }
     }
 

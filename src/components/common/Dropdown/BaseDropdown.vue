@@ -38,6 +38,8 @@
   const props = withDefaults(defineProps<IDropdownProps>(), {
     closeOnClickOutside: true,
     closeOnClick: false,
+    width: '100%',
+    onTheEdge: false,
   });
 
   const emit = defineEmits<{
@@ -111,12 +113,22 @@
       setContentPosition();
     });
   });
+
+  const edgeWidth = computed(() => {
+    return props.onTheEdge ? '170px' : 'fit-content';
+  });
+  const edgeRight = computed(() => {
+    return props.onTheEdge ? '100%' : 'initial';
+  });
+  const edgeLeft = computed(() => {
+    return props.onTheEdge ? 'initial' : '0';
+  });
 </script>
 
 <style scoped lang="scss">
   .dropdown {
     position: relative;
-    width: 100% !important;
+    width: v-bind(width);
     height: 100%;
     background: transparent;
     height: fit-content;
@@ -124,7 +136,7 @@
 
     &__content {
       min-width: 100%;
-      width: fit-content;
+      width: v-bind(edgeWidth);
       position: absolute;
       z-index: 999;
       overflow: hidden;
@@ -140,8 +152,8 @@
 
   .dropdown.dropdown_left {
     .dropdown__content {
-      left: 0;
-      right: initial;
+      left: v-bind(edgeLeft);
+      right: v-bind(edgeRight);
     }
   }
 

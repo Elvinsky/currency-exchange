@@ -88,6 +88,10 @@
         color: var(--color-gray-main);
         white-space: nowrap;
       }
+
+      @include w-max($sm) {
+        display: none;
+      }
     }
   }
 

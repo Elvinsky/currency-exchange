@@ -3,6 +3,8 @@
     v-model="isDropdownOpen"
     class="dropdown_bottom"
     closeOnClick
+    :width="width"
+    :onTheEdge="onTheEdge"
   >
     <template #trigger>
       <slot></slot>
@@ -36,10 +38,15 @@
   import BaseDropdown from '../Dropdown/BaseDropdown.vue';
   import RequiredIcon from '@/assets/icons/SignUp/RequiredIcon.vue';
 
-  defineProps<{
-    modelValue: string;
-    options: string[];
-  }>();
+  withDefaults(
+    defineProps<{
+      modelValue: string;
+      options: string[];
+      width?: string;
+      onTheEdge?: boolean;
+    }>(),
+    { width: '100%', onTheEdge: false }
+  );
 
   const emit = defineEmits<(e: 'update:modelValue', value: string) => void>();
 

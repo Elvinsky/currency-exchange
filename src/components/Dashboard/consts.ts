@@ -349,7 +349,7 @@ export const currencyDashboardMcokedHeaders: ITableHeaders[] = [
     label: 'PRICE',
     align: 'start',
     alignRows: 'start',
-    width: '0.5fr',
+    width: '1fr',
   },
   {
     id: '2',
@@ -358,6 +358,7 @@ export const currencyDashboardMcokedHeaders: ITableHeaders[] = [
     label: 'AMOUNT',
     width: '1fr',
     align: 'end',
+    alignRows: 'end',
   },
   {
     id: '3',
@@ -366,6 +367,75 @@ export const currencyDashboardMcokedHeaders: ITableHeaders[] = [
     label: 'TOTAL',
     align: 'end',
     width: '1fr',
+  },
+];
+
+export const currencyDashboardMockedDataCutted: IDashboardRows<ICurrencyColumnsFields>[] = [
+  {
+    id: '1',
+    price: 1.0014,
+    amount: 111,
+    total: 111463,
+  },
+  {
+    id: '2',
+    price: 1.0013,
+    amount: 670645,
+    total: 587809123,
+  },
+  {
+    id: '3',
+    price: 1.0012,
+    amount: 8812032,
+    total: 89919232,
+  },
+  {
+    id: '6',
+    price: 1.0009,
+    amount: 986734,
+    total: 45678901,
+  },
+  {
+    id: '7',
+    price: 1.0008,
+    amount: 23458,
+    total: 45328934,
+  },
+  {
+    id: '8',
+    price: 1.0007,
+    amount: 675432,
+    total: 67890123,
+  },
+  {
+    id: '9',
+    price: 1.0006,
+    amount: 456789,
+    total: 78901234,
+  },
+  {
+    id: '10',
+    price: 1.0005,
+    amount: 8765432,
+    total: 56789012,
+  },
+  {
+    id: '11',
+    price: 1.0004,
+    amount: 12345,
+    total: 12345678,
+  },
+  {
+    id: '12',
+    price: 1.0003,
+    amount: 54321,
+    total: 87654321,
+  },
+  {
+    id: '13',
+    price: 1.0002,
+    amount: 987654,
+    total: 23456789,
   },
 ];
 

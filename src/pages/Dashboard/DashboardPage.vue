@@ -80,7 +80,7 @@
     v-if="page.id === '1'"
   >
     <div class="dashboard-mobile__widget">
-      <CryptoStocksWidget v-if="getDeviceType === 'tablet'" />
+      <CryptoStocksWidget v-if="getDeviceType === 'mobile'" />
     </div>
     <div class="dashboard-mobile__table">
       <div class="dashboard-mobile__table__header">
@@ -100,6 +100,7 @@
           class="dashboard-mobile__table__header__select"
           v-model="userTableChoise"
           :options="['All', 'Largest', 'Smallest']"
+          onTheEdge
         >
           <template #default>
             <div class="dashboard-mobile__table__header__select__container">
@@ -145,7 +146,10 @@
   >
     <div class="dashboard-mobile-alt__forms">
       <CurrencyTradingForm />
-      <CurrencyDashboard :totalShown="false" />
+      <CurrencyDashboard
+        :totalShown="false"
+        cutted
+      />
     </div>
     <div class="dashboard-mobile-alt__tables">
       <ActionDashboard :statShown="false" />
@@ -533,6 +537,12 @@
           }
         }
       }
+
+      &__content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
     }
   }
 
@@ -568,7 +578,7 @@
   }
 
   .dashboard-tablet {
-    display: flex;
+    display: none;
     flex-direction: column;
     width: 100%;
     align-items: center;
@@ -579,8 +589,7 @@
     @include w-max($lg) {
       display: flex;
     }
-
-    @include w-min(300px) {
+    @include w-max($sm) {
       display: none;
     }
 
@@ -652,7 +661,6 @@
       gap: 12px;
 
       &__widget {
-        border: 1px solid black;
         width: 100%;
         height: 55vh;
       }
@@ -682,7 +690,7 @@
       display: none;
     }
     @include w-max($md) {
-      display: block;
+      display: flex;
     }
   }
 
@@ -690,8 +698,5 @@
     @include w-max($lg) {
       display: none;
     }
-  }
-
-  .tablet {
   }
 </style>

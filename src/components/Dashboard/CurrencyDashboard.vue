@@ -6,20 +6,26 @@
           ? currencyDashboardMcokedHeaders
           : currencyDashboardMcokedHeaders.filter(el => el.id !== '3')
       "
-      :rows="currencyDashboardMockedData"
+      :rows="cutted ? currencyDashboardMockedDataCutted : currencyDashboardMockedData"
     >
       <template #price-row="{ row }">
         <div
           :style="{ color: (row.price as number) >= 1.0005 ? '#e95b2f' : '#31a667' }"
-          :class="{ bordered: (row.price as number) === 1.0005 }"
+          :class="{
+            bordered: cutted ? (row.price as number) === 1.0007 : (row.price as number) === 1.0005,
+          }"
         >
           {{ row.price }}
         </div>
       </template>
       <template #amount-row="{ row }">
         <div
-          :style="{ color: (row.price as number) >= 1.0005 ? '#e95b2f' : '#31a667' }"
-          :class="{ bordered: (row.price as number) === 1.0005 }"
+          :style="{
+            color: totalShown ? ((row.price as number) >= 1.0005 ? '#e95b2f' : '#31a667') : 'black',
+          }"
+          :class="{
+            bordered: cutted ? (row.price as number) === 1.0007 : (row.price as number) === 1.0005,
+          }"
         >
           {{
             row.amount.toLocaleString('en-US', {
@@ -48,9 +54,16 @@
 
 <script setup lang="ts">
   import BaseTable from '@common/Table/BaseTable.vue';
-  import { currencyDashboardMcokedHeaders, currencyDashboardMockedData } from './consts';
+  import {
+    currencyDashboardMcokedHeaders,
+    currencyDashboardMockedData,
+    currencyDashboardMockedDataCutted,
+  } from './consts';
 
-  withDefaults(defineProps<{ totalShown: boolean }>(), { totalShown: true });
+  withDefaults(defineProps<{ totalShown: boolean; cutted: boolean }>(), {
+    totalShown: true,
+    cutted: false,
+  });
 </script>
 
 <style scoped lang="scss">
@@ -70,11 +83,15 @@
 
     @include w-max($md) {
       height: 100%;
-      padding: 0;
+      padding: 20px;
       width: 80vw;
     }
     @include w-max($lg) {
       height: 55vh;
+    }
+
+    @include w-max($sm) {
+      height: 100%;
     }
   }
 
